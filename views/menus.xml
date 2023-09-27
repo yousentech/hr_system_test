@@ -15,6 +15,13 @@
         action='hr_loan_action'
         sequence="10"/> 
 
+         <menuitem
+        id="offdays_menu"
+        name="الاجازات"
+        parent = "hr_menus"
+        action='hr_offdays_action'
+        sequence="20"/> 
+
 
     </data>
 </odoo>

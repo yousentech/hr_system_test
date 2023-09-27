@@ -16,6 +16,7 @@
                 'security/ir.model.access.csv',
                 'views/loan.xml',
                 'views/menus.xml',
+                'views/offdays.xml',
                
               
          ],
