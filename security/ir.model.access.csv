@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_info_hrsystem_loan,info.hrsystem_loan,model_hrsystem_loan,,1,1,1,1
+access_hrsystem_departments,hrsystem.departments,model_hrsystem_departments,,1,1,1,1
+access_hrsystem_details,hrsystem.details,model_hrsystem_details,,1,1,1,1
+
