@@ -36,7 +36,7 @@ class loan(models.Model):
 
                 # 'payment_method_id': self.inbound_payment_method.id,
                 'payment_type': 'outbound',
-                'partner_id': partner_id,
+                'partner_id': partner_id.id,
                 'amount': self.amount,
                # 'employee_id':self.employee_id.id,
                 'journal_id': self.journal_id.id,
