@@ -1,9 +1,13 @@
-from odoo import api, models, fields
-from odoo import date
-class loan(models.Model):
-    _name = 'hr.loan'
+from odoo import api,models,fields
+from datetime import date
 
-    employee_id = fields.Char(string="اسم الموظف ", required=True)
-    date = fields.Date(string="التاريخ", required=True,copy=False)
-    state= fields.Selection([('not_posted','غير معتمد'),('posted','معتمد')],default="not_posted",readonly=True) 
-    amount=fields.Float(string="التاريخ", required=True,)
+
+
+class loan(models.Model):
+       _name='hrsystem.loan'
+
+
+       employee_id=fields.Many2one('hr.employee',string="اسم الموظف" ,required=True)
+       date=fields.Date(string="تاريخ السلفة ")
+       amount=fields.Float(string="مبلغ السلفة ")
+   

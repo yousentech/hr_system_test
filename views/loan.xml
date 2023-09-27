@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <data>
+ 
+
+       <record id="hr_loan_view_form" model="ir.ui.view">
+            <field name="name">loan.view.form</field>
+            <field name="model">hrsystem.loan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id"></field>
+                                <field name="date"></field>
+                               <field name="amount"></field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+    <record id="hr_loan_view_tree" model="ir.ui.view">
+            <field name="name">loan.view.tree</field>
+            <field name="model">hrsystem.loan</field>
+            <field name="arch" type="xml">
+                <tree>
+                   <field name="employee_id"></field>
+                   <field name="date"></field>
+                   <field name="amount"></field>
+                </tree>
+            </field>
+    </record>
+
+    <record id="hr_loan_view_search" model="ir.ui.view">
+            <field name="name">loan.view.search</field>
+            <field name="model">hrsystem.loan</field>
+            <field name="arch" type="xml">
+                <search string="">
+                     <field name="employee_id"></field>
+                   <field name="date"></field>
+                   <field name="amount"></field>
+                  
+                </search>
+            </field>
+    </record>
+
+     <record id="hr_loan_action" model="ir.actions.act_window">
+            <field name="name">السلفات</field>
+            <field name="res_model">hrsystem.loan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_loan_view_tree"/>  
+            <field name="domain"></field>
+            <field name="context">{}</field>        
+            <field name="help" type="html">
+                <p> اضافة سلفة جديدة</p>
+            </field>
+     </record>
+
+
+    </data>
+</odoo>
