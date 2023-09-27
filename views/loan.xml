@@ -43,6 +43,9 @@
                      <field name="employee_id"></field>
                    <field name="date"></field>
                    <field name="amount"></field>
+                   <group expand="0" string="Group By">
+                    <filter string="الموظف" name="groupby_employee" context="{'group_by':'employee_id'}"/>
+                    </group>
                   
                 </search>
             </field>

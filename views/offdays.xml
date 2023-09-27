@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <data>
+ 
+
+       <record id="hr_offdays_view_form" model="ir.ui.view">
+            <field name="name">offdays.view.form</field>
+            <field name="model">hrsystem.offdays</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id"></field>
+                                 <field name="month"></field>
+                                <field name="number_of_days"></field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+    <record id="hr_offdays_view_tree" model="ir.ui.view">
+            <field name="name">offdays.view.tree</field>
+            <field name="model">hrsystem.offdays</field>
+            <field name="arch" type="xml">
+                <tree>
+                  <field name="employee_id"></field>
+                  <field name="month"></field>
+                  <field name="number_of_days"></field>
+                </tree>
+            </field>
+    </record>
+
+    <record id="hr_offdays_view_search" model="ir.ui.view">
+            <field name="name">offdays.view.search</field>
+            <field name="model">hrsystem.offdays</field>
+            <field name="arch" type="xml">
+                <search string="">
+                    <field name="employee_id"></field>
+                    <field name="month"></field>
+                  <field name="number_of_days"></field>
+                </search>
+            </field>
+    </record>
+
+     <record id="hr_offdays_action" model="ir.actions.act_window">
+            <field name="name">الاجازات</field>
+            <field name="res_model">hrsystem.offdays</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_offdays_view_tree"/>  
+            <field name="domain"></field>
+            <field name="context">{}</field>        
+            <field name="help" type="html">
+                <p> اضافة اجازات </p>
+            </field>
+     </record>
+
+
+    </data>
+</odoo>
