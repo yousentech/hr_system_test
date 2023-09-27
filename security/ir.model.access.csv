@@ -3,3 +3,5 @@ access_info_hrsystem_loan,info.hrsystem_loan,model_hrsystem_loan,,1,1,1,1
 access_hrsystem_departments,hrsystem.departments,model_hrsystem_departments,,1,1,1,1
 access_hrsystem_details,hrsystem.details,model_hrsystem_details,,1,1,1,1
 access_info_hrsystem_offdays,info.hrsystem_offdays,model_hrsystem_offdays,,1,1,1,1
+
+access_hrsystem_transaction,hrsystem.transaction,model_hrsystem_transaction,,1,1,1,1

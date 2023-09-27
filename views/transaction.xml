@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <data>
+        <record id="invoice_view_form" model="ir.ui.view">
+            <field name="name">invoice.view.form</field>
+            <field name="model">custom.invoice</field>
+            <field name="arch" type="xml">
+                <form>
+                <header>
+
+               <button name="" string="إعتماد" type="object" />
+               <!-- <button name="" string="إلغاء " type="object"/>   -->
+               <button name="" string="إظهار الموظفين" type="object"/>   
+       
+             
+               </header> 
+                    <sheet>
+                   
+                        <group>
+                                <field name="number_invoice" ></field>
+                                <field name="partner_id" ></field>
+                                <field name="represntative_id"></field>
+                                <field name="date_invoice"></field>
+                                <field name="journal_id"></field>
+                                <field name="status"></field>
+                                <field name="detail_ids">
+                                <tree  string="إضافة" editable="bottom">
+                                    <field name="product_id"></field>
+                                    <field name="description"></field>
+                                    <field name="quentity"></field>
+                                    <field name="price"></field>
+                                    <field name="total"></field>
+                                </tree>
+                            </field>
+                        </group>                   
+                </sheet>
+                   
+                </form>
+                     
+            </field>
+        </record>
+
+        <record id="invoice_view_tree" model="ir.ui.view">
+            <field name="name">invoice.view.tree</field>
+            <field name="model">custom.invoice</field>
+            <field name="arch" type="xml">
+                <tree>
+                       <field name="number_invoice"></field>
+                       <field name="partner_id"></field>
+                       <field name="represntative_id"></field>
+                       <field name="date_invoice"></field>
+                       <field name="journal_id"></field>
+                       <field name="status"></field>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="invoice_view_search" model="ir.ui.view">
+            <field name="name">invoice.view.search</field>
+            <field name="model">custom.invoice</field>
+            <field name="arch" type="xml">
+                <search string="">
+                     <field name="number_invoice"></field>
+                     <field name="partner_id"></field>
+                     <field name="represntative_id"></field>
+                     <field name="date_invoice"></field>
+                     <field name="journal_id"></field>
+                     <field name="status"></field>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="invoice_action" model="ir.actions.act_window">
+            <field name="name">All invoice</field>
+            <field name="res_model">custom.invoice</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="invoice_view_tree"/>
+            <field name="domain"></field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">أنقر للإضافة </p>
+            </field>
+        </record>
+        
+    </data>
+</odoo>
+    
