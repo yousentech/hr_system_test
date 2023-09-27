@@ -18,6 +18,8 @@
                 'views/menus.xml',
                 'views/offdays.xml',
                
+               'views/employee.xml',
+               'views/departments.xml',
               
          ],
      
