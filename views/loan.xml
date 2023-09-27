@@ -9,13 +9,18 @@
             <field name="model">hrsystem.loan</field>
             <field name="arch" type="xml">
                 <form>
+                  <header>
+                     <button string="اعتماد" name="confirm"  class="oe_highlight" type="object" states="not_posted"  />
+                     <field name="state" widget="statusbar" statusbar_visible="not_posted, posted"/>
+                  </header>
                     <sheet>
                         <group>
-                            <group>
+                         
                                 <field name="employee_id"></field>
                                 <field name="date"></field>
+                                <field name="journal_id"></field>
                                <field name="amount"></field>
-                            </group>
+                           
                         </group>
                     </sheet>
                 </form>
@@ -30,6 +35,8 @@
                 <tree>
                    <field name="employee_id"></field>
                    <field name="date"></field>
+                   <field name="journal_id"></field>
+                   <field name="payment_id"></field>
                    <field name="amount"></field>
                 </tree>
             </field>
@@ -42,6 +49,7 @@
                 <search string="">
                      <field name="employee_id"></field>
                    <field name="date"></field>
+                   <field name="journal_id"></field>
                    <field name="amount"></field>
                    <group expand="0" string="Group By">
                     <filter string="الموظف" name="groupby_employee" context="{'group_by':'employee_id'}"/>
@@ -63,6 +71,16 @@
             </field>
      </record>
 
+    <!-- <record id="hr_loan_payment_id_view" model="ir.ui.view">
+            <field name="name">employee_id</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_supplier_payment_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                     <field name="employee_id" />
+                </field>
+            </field>
+        </record>  -->
 
     </data>
 </odoo>
