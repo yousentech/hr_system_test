@@ -52,13 +52,7 @@
     
     
   
-    <!--==================================== MENUES =================================-->
-         <menuitem id="main_hrsystem_menu1" name="hr system"/>
-       <menuitem id="main_hrsystem_menu2" name="hr system" parent="main_hrsystem_menu1" sequence="10"/>
-     
-        <menuitem id="main_hrsystem_menu3" name="الاقسام"  parent="main_hrsystem_menu2"
-                action="action_list_hrs_depts"
-                    sequence="20"/>
+  
 
  
 </data>

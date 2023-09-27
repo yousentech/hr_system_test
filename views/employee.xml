@@ -13,7 +13,7 @@
                  <field name="work_email" position="after">
                    <field name="total_salary" />
                     <field name="emplo_checkbox" />
-                     <field name="departments_id" />
+                     <!-- <field name="departments_id" /> -->
                 </field>
                 <xpath expr="//notebook" position="inside">
                      <page string=" نفاصيل الموظفين المضافة hr system" name="order_lines">
@@ -22,7 +22,7 @@
                                     <field name="net_salary"/>
                                     <field name="rewards"/>
                                     <field name="discount"/>
-                                    <field name="mounth"/>
+                                    <field name="month"/>
                                     <field name="year"/>
                                     <field name="off_days"/>
                                 </tree>
