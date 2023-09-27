@@ -21,15 +21,9 @@ class MasterEmployee(models.Model):
     # emplo_personal_card_num=fields.Integer(string="رقم البطاقة الشخصية")
     # odoo_emplo_ids=fields.One2many('hr.employee','emp_master_id')
     detail_ids=fields.One2many('hrsystem.details','emp_master_id')
-    # partner_id = fields.Many2one('res.partner', string='Partner')
-    # @api.model
-    # def create(self, vals):
-    #     partner = self.env['res.partner'].create({
-    #         'name': vals.get('name'),
-    #         # قم بإضافة المزيد من الحقول الأخرى في "res.partner" التي ترغب في تعيينها من "hr.employee"
-    #     })
-    #     vals['partner_id'] = partner.id
-    #     return super(MasterEmployee, self).create(vals)
+   
+
+
 
 
 
@@ -41,28 +35,8 @@ class Details(models.Model):
     net_salary=fields.Float(string="صافي الراتب",help="long desc",index=True)
     rewards=fields.Float(string="المكافات ",help="long desc",index=True)
     discount=fields.Float(string="الخصومات ",help="long desc",index=True)
-    _sql_constraints = [
-        ('check_net_salary_positive', 'CHECK(net_salary >= 0)', 'يجب أن يكون صافي الراتب أكبر من أو يساوي صفر.'),
-        ('check_rewards_positive', 'CHECK(rewards >= 0)', 'يجب أن تكون المكافات أكبر من أو يساوي صفر.'),
-        ('check_discount_negative', 'CHECK(discount <= 0)', 'يجب أن تكون الخصومات أقل من أو تساوي صفر.'),
-    ]
-    # @api.model
-    # def _get_month_selection(self):
-    #     current_month = datetime.datetime.now().month
-    #     months = [(str(i), datetime.date(1900, i, 1).strftime('%B')) for i in range(1, 13)]
-    #     return months[current_month - 1:]
-
-    # @api.model
-    # def _get_year_selection(self):
-    #     current_year = datetime.datetime.now().year
-    #     years = [(str(i), str(i)) for i in range(current_year - 10, current_year + 1)]
-    #     return years
-
-    # month = fields.Selection(selection='_get_month_selection', string='الشهر', help='وصف طويل', index=True)
-    # year = fields.Selection(selection='_get_year_selection', string='السنة', help='وصف طويل', index=True)
-
-    month=fields.Char(string="الشهر ",help="long desc",index=True)
-    year=fields.Char(string="السنة ",help="long desc",index=True)
+    mounth=fields.Integer(string="الشهر ",help="long desc",index=True)
+    year=fields.Integer(string="السنة ",help="long desc",index=True)
     off_days=fields.Integer(string="أيام الغياب")
     
     emp_master_id = fields.Many2one('hr.employee')   
