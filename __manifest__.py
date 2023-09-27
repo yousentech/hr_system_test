@@ -20,6 +20,7 @@
                
                'views/employee.xml',
                'views/departments.xml',
+               'views/products.xml',
               
          ],
      

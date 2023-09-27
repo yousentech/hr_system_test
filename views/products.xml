@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+   <record model="ir.ui.view" id="view_product_template_custom">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+            <!-- `<field name="custom_field"...>` block adds the new field `custom_field` to the invoice form view, positioned after the `amount_total` field. -->
+                <!-- <xpath expr="//field[@name='partner_shipping_id']" position="after">, uses an XPath expression to locate the desired position for adding the new field. It provides more flexibility in terms of targeting the exact location within the view. -->
+                 <field name="product_tag_ids" position="after">
+                   <field name="products_select" />
+                     <!-- <field name="departments_id" /> -->
+                </field>
+                
+               
+            </field>
+        </record>
+
+</data>
+</odoo>
