@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <data>
+       <menuitem
+            id="hr_menus"
+            name=" ادارة موظفين " 
+            sequence="10"/>
+
+
+       <menuitem
+        id="loan_menu"
+        name="سلفات"
+        parent = "hr_menus"
+        action='hr_loan_action'
+        sequence="10"/> 
+
+
+    </data>
+</odoo>
