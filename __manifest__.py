@@ -17,6 +17,8 @@
                 'views/loan.xml',
                 'views/menus.xml',
                 'views/offdays.xml',
+                # 'views/transaction.xml',
+                'views/transaction.xml',
                
                'views/employee.xml',
                'views/departments.xml',

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <data>
+        <record id="transaction_view_form" model="ir.ui.view">
+            <field name="name">transaction.view.form</field>
+            <field name="model">hrsystem.transaction</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+
+                        <button name="convirm" string="إعتماد" type="object" />
+                        <!-- <button name="" string="إلغاء " type="object"/>   -->
+                        <button name="display_employees" string="إظهار الموظفين" type="object"/>
+
+
+                    </header>
+
+                    <sheet>
+
+                        <group>
+                            <field name="month"></field>
+                            <field name="year"></field>
+
+                            <field name="transaction_details_ids">
+                                <tree string="إضافة" editable="bottom">
+                                    <field name="empolyee_id"/>
+                                    <field name="rewards"/>
+                                    <field name="discount"/>
+                                    <field name="mounth"/>
+                                    <field name="year"/>
+                                    <field name="off_days"/>
+                                    <field name="net_salary"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+
+                </form>
+
+            </field>
+        </record>
+
+        <record id="transaction_view_tree" model="ir.ui.view">
+            <field name="name">transaction.view.tree</field>
+            <field name="model">hrsystem.transaction</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="month"></field>
+                    <field name="year"></field>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="transaction_view_search" model="ir.ui.view">
+            <field name="name">transaction.view.search</field>
+            <field name="model">hrsystem.transaction</field>
+            <field name="arch" type="xml">
+                <search string="">
+                    <field name="month"></field>
+                    <field name="year"></field>
+
+                </search>
+            </field>
+        </record>
+
+
+        <record id="transaction_action" model="ir.actions.act_window">
+            <field name="name">All transaction</field>
+            <field name="res_model">hrsystem.transaction</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="transaction_view_form"/>
+            <field name="domain"></field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">أنقر للإضافة </p>
+            </field>
+        </record>
+
+        <menuitem id="transaction_menu" name="الرواتب"
+        parent = "hr_menus" action='transaction_action' sequence="10"/>
+
+    </data>
+</odoo>
+    

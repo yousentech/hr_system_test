@@ -15,7 +15,6 @@
         action='hr_loan_action'
         sequence="10"/> 
 
-<<<<<<< HEAD
          <menuitem
         id="offdays_menu"
         name="الاجازات"
@@ -24,7 +23,6 @@
         sequence="20"/> 
 
 
-=======
         <menuitem 
         id="employee_menu" 
         name="الموظفون"  
@@ -46,6 +44,6 @@
         action="action_list_hrs_depts"
         sequence="10"
         /> -->
->>>>>>> 97a779c (add employees & details & departments & products and all details)
+     
     </data>
 </odoo>
