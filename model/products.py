@@ -9,4 +9,4 @@ class Products(models.Model):
         ('prod_off_days', 'إجازة'),
         ('prod_reward', 'مكافأة'),
         ('prod_on_account', 'سلفة'),
-    ])
+    ],string="نوع الصنف")

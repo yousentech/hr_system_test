@@ -27,21 +27,21 @@ class loan(models.Model):
             raise ValidationError("التاريخ لا يجب ان يكون في المستقبل")
         
        def confirm(self):
-            print("self.employee_id.ids",self.employee_id.ids)  
-            partner_id = self.env['res.partner'].search([('employee_ids.id','=',self.employee_id.id)]) 
-            print("partner_id",partner_id)  
+       #      print("self.employee_id.ids",self.employee_id.ids)  
+       #      partner_id = self.env['res.partner'].search([('employee_ids','in',self.employee_id.ids)]) 
+       #      print("partner_id",partner_id.id)  
             payment = self.env['account.payment'].create({
                 'date': self.date,
                 # 'payment_method_line_id': self.pay_way,
-
                 # 'payment_method_id': self.inbound_payment_method.id,
                 'payment_type': 'outbound',
-                'partner_id': partner_id.id,
+                'partner_id':self.employee_id.partner_id.id,
                 'amount': self.amount,
                # 'employee_id':self.employee_id.id,
                 'journal_id': self.journal_id.id,
                
                   })
+           
             payment.action_post()
             self.payment_id=payment.id
             self.write({'state': 'posted'})

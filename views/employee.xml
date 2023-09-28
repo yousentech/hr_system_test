@@ -13,6 +13,7 @@
                  <field name="work_email" position="after">
                    <field name="total_salary" />
                     <field name="emplo_checkbox" />
+                     <field name="partner_id" />
                      <!-- <field name="departments_id" /> -->
                 </field>
                 <xpath expr="//notebook" position="inside">
@@ -22,7 +23,7 @@
                                     <field name="net_salary"/>
                                     <field name="rewards"/>
                                     <field name="discount"/>
-                                    <field name="month"/>
+                                    <field name="mounth"/>
                                     <field name="year"/>
                                     <field name="off_days"/>
                                 </tree>
