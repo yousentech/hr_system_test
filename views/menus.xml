@@ -15,16 +15,12 @@
         action='hr_loan_action'
         sequence="10"/> 
 
-<<<<<<< HEAD
          <menuitem
-=======
-         <!-- <menuitem
->>>>>>> d9a4ae4 (aaaa)
         id="offdays_menu"
         name="الاجازات"
         parent = "hr_menus"
         action='hrsystem.hr_offdays_action'
-        sequence="20"/>  -->
+        sequence="20"/>  
 
 
         <menuitem 

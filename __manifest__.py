@@ -13,16 +13,13 @@
     'maintainer': 'yousen Techno Solutions',
     'depends': ['base','account','hr','stock','report_xlsx'],
     'data': [   
-<<<<<<< HEAD
                 'security/ir.model.access.csv',
                 'security/security.xml',
                 'views/loan.xml',
                 
-=======
               
                 'views/loan.xml',
                
->>>>>>> d9a4ae4 (aaaa)
                 'views/offdays.xml',
                 # 'views/transaction.xml',
                 'views/transaction.xml',
@@ -30,13 +27,10 @@
                'views/employee.xml',
                'views/departments.xml',
                'views/products.xml',
-<<<<<<< HEAD
                'views/menus.xml',
-=======
                'views/employee_report.xml',
                 'views/one_employee_report.xml',
                 'views/menus.xml',
->>>>>>> d9a4ae4 (aaaa)
               
          ],
      
