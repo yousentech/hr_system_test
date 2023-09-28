@@ -44,5 +44,6 @@
         action="action_list_hrs_depts"
         sequence="10"
         /> -->
+     
     </data>
 </odoo>
