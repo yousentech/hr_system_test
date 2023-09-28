@@ -6,3 +6,5 @@ access_info_hrsystem_offdays,info.hrsystem_offdays,model_hrsystem_offdays,,1,1,1
 
 access_hrsystem_transaction,hrsystem.transaction,model_hrsystem_transaction,,1,1,1,1
 access_hrsystem_transactiondetails,hrsystem.transactiondetails,model_hrsystem_transactiondetails,,1,1,1,1
+access_hrsystem_wizard,hrsystem.wizard,model_hrsystem_wizard,,1,1,1,1
+access_hrsystem_wizard_one_employee,hrsystem.wizard_one_employee,model_hrsystem_wizard_one_employee,,1,1,1,1

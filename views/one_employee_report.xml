@@ -1,0 +1,149 @@
+<odoo>
+    <data>
+     <!--==report==============-->
+
+        <record id="view_my_wizard2_form" model="ir.ui.view">
+            <field name="name">hrsystem.wizard.form</field>
+            <field name="model">hrsystem.wizard_one_employee</field>
+            <field name="arch" type="xml">
+                <form string="My Wizard">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print Report pdf" type="object" class="btn-primary"/>
+                        <!-- <button name="action_print_report_EXCEL" string="Print Report exl" type="object" class="btn-primary"/> -->
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+         <record id="action_my_wizard2" model="ir.actions.act_window">
+            <field name="name">My Wizard</field>
+            <field name="res_model">hrsystem.wizard_one_employee</field>
+            <field name="view_mode">form</field>
+             <!-- <field name="view_type">form</field> -->
+            <field name="view_id" ref="view_my_wizard2_form"/>
+             <field name="target">new</field>
+            <field name="binding_model_id" ref="model_hrsystem_wizard"/>
+        </record>
+                <!-- ================================ Pdf report2 ==================================== -->
+            <record id="report_generate" model="ir.actions.report">
+            <field name="name">My Wizard Report</field>
+            <field name="type">ir.actions.report</field>
+            <field name="model">hrsystem.wizard_one_employee</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hr_system_test.report_generate_template22</field>
+            <field name="report_file">hr_system_test.report_generate_template22</field>
+            <!-- <field name="binding_model_id" ref="model_openacademy_wizard"/> -->
+        </record>
+        <report
+            id="report_invoice_generate_one"
+            model="hrsystem.wizard_one_employee"
+            string="My Wizard Report"
+            report_type="qweb-pdf"
+            name="hr_system_test.report_generate_template22"
+            file="hr_system_test.report_generate_template22"
+        
+        />
+     
+        <!-- <report
+            id="bill_report_xlsx2"
+            model="openacademy.wizard"
+            string="طباعة"
+            report_type="xlsx"
+            name="openacademy.bill_report_view_template"
+            file="openacademy.bill_report_view_template"
+            attachment_use="False"
+            
+        /> -->
+           
+           <template id="report_generate_template22">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div>
+                        <h1>Invoice Report</h1>
+                       <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+</style>
+
+<table>
+    <tr>
+        <th> إسم الموظف'</th>
+        <th>إجمالي الراتب '</th>
+        
+       
+         <th>  رقم الجوال"'</th>
+         <th> الوظيفة"</th>
+           <th> القسم"</th>
+
+    </tr>
+    <tr>
+         <td> <span t-esc="bill.name"/></td>
+                        <td> <span t-esc="bill.total_salary"/></td>
+                        <!-- <td> <span t-esc="bill.emplo_checkbox"/></td> -->
+                        <td> <span t-esc="bill.mobile_phone"/></td>
+                        <td><span t-esc="bill.job_id"/></td>
+                        <td><span t-esc="bill.department_id"/></td>
+    </tr>
+</table>
+                       
+                        <!-- cource inside-->
+                        <t t-if="doc.detail_id">
+                            <p>نفاصيل الموظف  :</p>
+                            
+<table>
+    <tr>
+   
+                        <th class="w-20">صافي الراتب</th>
+                        <th class="w-20">المكافأة</th>
+                        <th class="w-20">الخصم</th>
+                        <th class="w-20">الشهر</th>
+                        <th class="w-20"> السنة</th>
+                        <th class="w-20"> أيام الاجازات</th>
+
+    </tr>
+     <t t-foreach="doc.detail_id" t-as="course">
+    <tr>
+    
+       <td><span t-field="course.net_salary"/></td>
+                                        <td><span t-field="course.rewards"/></td>
+                                        <td><span t-field="course.discount"/></td>
+                                        <td><span t-field="course.month"/></td>
+                                         <td><span t-field="course.year"/></td>
+                                        <td><span t-field="course.off_days"/></td>
+
+    </tr>
+                                    </t>
+
+</table>
+                           
+                        </t>
+                     
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
+
+
+   
