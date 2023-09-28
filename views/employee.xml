@@ -23,6 +23,7 @@
                                     <field name="net_salary"/>
                                     <field name="rewards"/>
                                     <field name="discount"/>
+                                    <field name="loan"/>
                                     <field name="mounth"/>
                                     <field name="year"/>
                                     <field name="off_days"/>
