@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <data>
+       <menuitem
+            id="hr_menus"
+            name=" ادارة موظفين " 
+            sequence="10"/>
+
+
+       <menuitem
+        id="loan_menu"
+        name="سلفات"
+        parent = "hr_menus"
+        action='hr_loan_action'
+        sequence="10"/> 
+
+         <menuitem
+        id="offdays_menu"
+        name="الاجازات"
+        parent = "hr_menus"
+        action='hrsystem.hr_offdays_action'
+        sequence="20"/>  
+
+
+        <menuitem 
+        id="employee_menu" 
+        name="الموظفون"  
+        parent="hr_menus"
+        action="hr.open_view_employee_list_my"
+        sequence="10"
+        />
+         <menuitem 
+        id="prod_menu" 
+        name="الأصناف"  
+        parent="hr_menus"
+        action="sale.product_template_action"
+        sequence="10"
+        />
+        <menuitem 
+        id="repo_menu" 
+        name="التقارير"  
+        parent="hr_menus"
+        sequence="20"
+        />
+        <menuitem 
+        id="repo_menu2" 
+        name="كشف رواتب الموظفين"  
+        parent="repo_menu"
+        action="action_my_wizard"
+        sequence="20"
+        />
+         <menuitem 
+        id="repo_menu3" 
+        name="كشف راتب موظف "  
+        parent="repo_menu"
+        action="action_my_wizard2"
+        sequence="20"
+        />
+        <!-- <menuitem 
+        id="dept_menu" 
+        name="الاقسام"  
+        parent="hr_menus"
+        action="action_list_hrs_depts"
+        sequence="10"
+        /> -->
+<<<<<<< HEAD
+     
+=======
+>>>>>>> d9a4ae4 (aaaa)
+    </data>
+</odoo>

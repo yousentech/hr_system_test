@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+    <record model="ir.ui.view" id="employee_extension_form_view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+            <!-- `<field name="custom_field"...>` block adds the new field `custom_field` to the invoice form view, positioned after the `amount_total` field. -->
+                <!-- <xpath expr="//field[@name='partner_shipping_id']" position="after">, uses an XPath expression to locate the desired position for adding the new field. It provides more flexibility in terms of targeting the exact location within the view. -->
+                 <field name="work_email" position="after">
+                   <field name="total_salary" />
+                    <field name="emplo_checkbox" />
+                     <field name="partner_id" />
+                     <!-- <field name="departments_id" /> -->
+                </field>
+                <xpath expr="//notebook" position="inside">
+                     <page string=" نفاصيل الموظفين المضافة hr system" name="order_lines">
+                  <field name="detail_ids" >
+                                <tree string="التفاصيل " editable="bottom">
+                                    <field name="net_salary"/>
+                                    <field name="rewards"/>
+                                    <field name="discount"/>
+                                    <field name="mounth"/>
+                                    <field name="year"/>
+                                    <field name="off_days"/>
+                                </tree>
+                            </field>
+                 </page>
+                </xpath>
+               
+            </field>
+        </record>
+</data>
+</odoo>

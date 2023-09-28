@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+  <!--==New employee ==============-->
+
+        <record id="hrs_depts_view_form" model="ir.ui.view">
+            <field name="name">hrs departments</field>
+            <field name="model">hrsystem.departments</field>
+            <field name="arch" type="xml">
+                <form string="" >
+                 
+                    <sheet>
+                      
+                            <field name="deptname" />
+                     
+                      
+                    </sheet>
+               
+                </form>
+            </field>
+        </record>
+        <record id="hrs_depts_view_tree" model="ir.ui.view">
+            <field name="name">hrs departments</field>
+            <field name="model">hrsystem.departments</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                
+                    <field name="deptname" />
+                    
+                </tree>
+            </field>
+        </record>
+         <record id="action_list_hrs_depts" model="ir.actions.act_window">
+            <field name="name">hrs depts</field>
+            <field name="res_model">hrsystem.departments</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="hrs_depts_view_tree"/>
+            <field name="domain"></field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to create new invoice</p>
+
+            </field>
+        </record>
+
+        <!--===========================================finished========================-->
+    
+    
+    
+    
+    
+  
+  
+
+ 
+</data>
+</odoo>

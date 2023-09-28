@@ -11,15 +11,32 @@
     'website': "https://www.qimamhd.com",
     'company': 'yousen Techno Solutions',
     'maintainer': 'yousen Techno Solutions',
-    'depends': ['base','account','stock','report_xlsx'],
+    'depends': ['base','account','hr','stock','report_xlsx'],
     'data': [   
                 'security/ir.model.access.csv',
+                'security/security.xml',
+                'views/loan.xml',
+                
+              
+                'views/loan.xml',
                
+                'views/offdays.xml',
+                # 'views/transaction.xml',
+                'views/transaction.xml',
+               
+               'views/employee.xml',
+               'views/departments.xml',
+               'views/products.xml',
+               'views/menus.xml',
+               'views/employee_report.xml',
+                'views/one_employee_report.xml',
+                'views/menus.xml',
               
          ],
      
     'license': 'LGPL-3',
     'images': [],
+    'sequence':'-100',
     'installable': True,
     'auto_install': False,
     'application': True,
