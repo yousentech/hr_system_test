@@ -35,8 +35,8 @@ class Details(models.Model):
     net_salary=fields.Float(string="صافي الراتب",help="long desc",index=True)
     rewards=fields.Float(string="المكافات ",help="long desc",index=True)
     discount=fields.Float(string="الخصومات ",help="long desc",index=True)
-    mounth=fields.Integer(string="الشهر ",help="long desc",index=True)
-    year=fields.Integer(string="السنة ",help="long desc",index=True)
+    mounth=fields.Char(string="الشهر ",help="long desc",index=True)
+    year=fields.Char(string="السنة ",help="long desc",index=True)
     off_days=fields.Integer(string="أيام الغياب")
     
     emp_master_id = fields.Many2one('hr.employee')   

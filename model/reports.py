@@ -4,22 +4,24 @@ import datetime
 class MyWizardOneEmployee(models.TransientModel):
     _name = 'hrsystem.wizard_one_employee'
     _description = 'My Wizard Report'
-    name=fields.Many2one("hr.employee")
+    emplo_id=fields.Many2one("hr.employee")
     def print_report(self):
         data={
-            'name':self.name,
+            'id':self.emplo_id.id,
                     }
         return self.env.ref('hr_system_test.report_invoice_generate_one').report_action(self, data=data)
     
 
 
 class OpenPDF(models.AbstractModel):
-    _name='report.hr_system_test.report_generate_template2_one'
+    _name='report.hr_system_test.report_generate_template22'
 
     def _get_report_values(self, docids, data=None):
         domain = []
-        if data.get('name'):
-            domain.append(('name', '=', data.get('name')))
+        if data.get('id'):
+            print(data.get('id'),"jjjjjjjjjjjjjjjj")
+            domain.append(('id', 'in', [data.get('id')]))
+            
        
 
 
@@ -70,16 +72,17 @@ class OpenPDF(models.AbstractModel):
     def _get_report_values(self, docids, data=None):
         domain = []
         if data.get('month'):
-            domain.append(('month', '=', data.get('month')))
+            domain.append(('mounth', '=', data.get('month')))
         if data.get('year'):
-            domain.append(('year', 'in',[data.get('year')]))
+            domain.append(('year', '=',data.get('year')))
        
 
 
-        docs = self.env['hrsystem.transaction'].search(domain)
+        docs = self.env['hrsystem.transactiondetails'].search(domain)
       
-        
-        print("hhhhhhhhhhh",docs )
+        for i in docs:
+
+            print("hhhhhhhhhhh",i )
         print("hhhhhhhhhhh",data )
         print("=======================================")
         return {

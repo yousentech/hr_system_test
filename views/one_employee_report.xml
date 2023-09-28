@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <form string="My Wizard">
                     <group>
-                        <field name="name"/>
+                        <field name="emplo_id"/>
                     </group>
                     <footer>
                         <button name="print_report" string="Print Report pdf" type="object" class="btn-primary"/>
@@ -48,12 +48,12 @@
         />
      
         <!-- <report
-            id="bill_report_xlsx2"
+            id="doc_report_xlsx2"
             model="openacademy.wizard"
             string="طباعة"
             report_type="xlsx"
-            name="openacademy.bill_report_view_template"
-            file="openacademy.bill_report_view_template"
+            name="openacademy.doc_report_view_template"
+            file="openacademy.doc_report_view_template"
             attachment_use="False"
             
         /> -->
@@ -97,17 +97,17 @@
 
     </tr>
     <tr>
-         <td> <span t-esc="bill.name"/></td>
-                        <td> <span t-esc="bill.total_salary"/></td>
-                        <!-- <td> <span t-esc="bill.emplo_checkbox"/></td> -->
-                        <td> <span t-esc="bill.mobile_phone"/></td>
-                        <td><span t-esc="bill.job_id"/></td>
-                        <td><span t-esc="bill.department_id"/></td>
+         <td> <span t-esc="doc.name"/></td>
+                        <td> <span t-esc="doc.total_salary"/></td>
+                        <!-- <td> <span t-esc="doc.emplo_checkbox"/></td> -->
+                        <td> <span t-esc="doc.mobile_phone"/></td>
+                        <td><span t-esc="doc.job_id.name"/></td>
+                        <td><span t-esc="doc.department_id.name"/></td>
     </tr>
 </table>
                        
                         <!-- cource inside-->
-                        <t t-if="doc.detail_id">
+                      
                             <p>نفاصيل الموظف  :</p>
                             
 <table>
@@ -121,13 +121,13 @@
                         <th class="w-20"> أيام الاجازات</th>
 
     </tr>
-     <t t-foreach="doc.detail_id" t-as="course">
+     <t t-foreach="doc.detail_ids" t-as="course">
     <tr>
     
        <td><span t-field="course.net_salary"/></td>
                                         <td><span t-field="course.rewards"/></td>
                                         <td><span t-field="course.discount"/></td>
-                                        <td><span t-field="course.month"/></td>
+                                        <td><span t-field="course.mounth"/></td>
                                          <td><span t-field="course.year"/></td>
                                         <td><span t-field="course.off_days"/></td>
 
@@ -136,7 +136,7 @@
 
 </table>
                            
-                        </t>
+                     
                      
                     </div>
                 </t>
