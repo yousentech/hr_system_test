@@ -14,12 +14,12 @@ class transaction_master(models.Model):
 
     month = fields.Date(string="الشهر")
     year = fields.Date(string="السنة")
-    # journal_id = fields.Many2one('account.journal',domain=[('type','in',['purchase'])],string='نوع الفاتورة')
+  
     transaction_details_ids = fields.One2many(
         'hrsystem.transactiondetails', 'transaction_id')
 
     def convirm(self):
-        empolyees = self.env['hr.employee'].search([])
+        empolyees = self.env['hr.employee'].search([('emplo_checkbox', '=', 'True')])
 
         for item in self.transaction_details_ids:
             employee_details = self.env['hrsystem.details'].create({
@@ -34,7 +34,7 @@ class transaction_master(models.Model):
             })
             
         for recorde in empolyees:
-            print('=======recorde===========',recorde)
+         
             invoice_details = []
             get_employee_detail = self.env['hrsystem.details'].search([('emp_master_id', '=', item.id)])
             
@@ -55,7 +55,7 @@ class transaction_master(models.Model):
                 'price_unit': get_employee_detail.loan
 
             }
-            print('=======product_loan===oooooooooooooooooooooo========',product_loan.id,product_salary.id)
+         
         
             invoice_details.append((0, 0, product_loan_object))
           
@@ -76,11 +76,11 @@ class transaction_master(models.Model):
 
             }
             invoice_details.append((0, 0, product_off_days_object))
-            print('========invoice_details======',invoice_details)
+         
             jurnal_value = self.env['account.journal'].search([('type', '=', 'purchase')])
             invoice = self.env['account.move'].create({
                 'move_type': 'in_invoice',
-                'partner_id': recorde.parent_id_id.id,
+                'partner_id': recorde.partner_id.id,
                 'invoice_date': self.month,
                 'journal_id': jurnal_value.id,
                 'invoice_line_ids': invoice_details,
@@ -101,7 +101,7 @@ class transaction_master(models.Model):
         return message
 
     def display_employees(self):
-        empolyees = self.env['hr.employee'].search([])
+        empolyees = self.env['hr.employee'].search([('emplo_checkbox', '=', 'True')])
         for item in empolyees:
             loan = self.env['hrsystem.loan'].search(
                 [('employee_id', '=', item.id)])
