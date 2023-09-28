@@ -15,12 +15,13 @@
     'data': [   
                 'security/ir.model.access.csv',
                 'views/loan.xml',
-                'views/menus.xml',
+                
                 'views/offdays.xml',
                
                'views/employee.xml',
                'views/departments.xml',
                'views/products.xml',
+               'views/menus.xml',
               
          ],
      

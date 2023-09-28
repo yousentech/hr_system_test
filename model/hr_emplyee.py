@@ -9,7 +9,7 @@ class MasterEmployee(models.Model):
     _rec_name='name'
     total_salary=fields.Float(string="إجمالي الراتب",help="long desc",index=True)
     emplo_checkbox = fields.Boolean(string='موظف لدينا')
-
+    partner_id=fields.Many2one('res.partner',string='اسم الشريك ')
     _sql_constraints = [
         ('check_total_salary_positive', 'CHECK(total_salary >= 0)', 'يجب أن يكون إجمالي الراتب أكبر من أو يساوي صفر.'),
     ]
