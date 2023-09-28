@@ -34,6 +34,17 @@
               
          ],
      
+'qweb': [
+    'static/src/fonts/K2FhfZBRmr9vQ1pHEey6GIGo8_pv3myYjuXwe55ijDz-oQ.woff2',
+],
+'images':[
+     'static/images/code.png',
+    'static/src/img/hero-bg.png',
+ 'static/src/img/hero-img.png', 
+ 'static/src/img/team-shape.png',
+   
+],
+
     'license': 'LGPL-3',
     'images': [],
     'sequence':'-100',

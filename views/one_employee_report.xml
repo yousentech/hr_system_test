@@ -61,29 +61,61 @@
            <template id="report_generate_template22">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
-                    <div>
-                        <h1>Invoice Report</h1>
+                  
+<head>
+  <link href="hr_system_test/static/src/css/style.css" rel="stylesheet" />
+
+  </head>
                        <style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    
-    th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-    
-    th {
-        background-color: #f2f2f2;
-        font-weight: bold;
-    }
-    
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
+   table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even){background-color: rgba(255, 255, 255, 0.5);}
+table tr:nth-child(odd){background-color:  #4154f1;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:rgba(0, 0, 0, 0.3);
+  color: white;
+}
 </style>
+
+                                  
+<body>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div  style="display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;position: absolute; margin-left: 700px;margin-top: 50px;">
+          <h1 >تقرير كشف رواتب الموظفين<br /> <span style="font-size: 33px;color: gray;">ليناير 2024</span> </h1>
+          
+        
+        </div>
+        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200" >
+          <img src="assets/img/hero-img.png" class="img-fluid" style="height: 20rem; width: 20rem" />
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <br/>
+  <br/>
 
 <table>
     <tr>
@@ -107,18 +139,18 @@
 </table>
                        
                         <!-- cource inside-->
-                      
+                      <br />
                             <p>نفاصيل الموظف  :</p>
                             
 <table>
     <tr>
    
-                        <th class="w-20">صافي الراتب</th>
-                        <th class="w-20">المكافأة</th>
-                        <th class="w-20">الخصم</th>
-                        <th class="w-20">الشهر</th>
-                        <th class="w-20"> السنة</th>
-                        <th class="w-20"> أيام الاجازات</th>
+                        <th >صافي الراتب</th>
+                        <th >المكافأة</th>
+                        <th >الخصم</th>
+                        <th >الشهر</th>
+                        <th > السنة</th>
+                        <th > أيام الاجازات</th>
 
     </tr>
      <t t-foreach="doc.detail_ids" t-as="course">
@@ -135,12 +167,32 @@
                                     </t>
 
 </table>
-                           
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="copyright">
+     Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+      </div>
+     
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+</body>     
                      
                      
-                    </div>
+                  
                 </t>
             </t>
+
+
+
+            ==================================================================================
+
         </template>
     </data>
 </odoo>
