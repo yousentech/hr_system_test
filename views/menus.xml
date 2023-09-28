@@ -15,12 +15,16 @@
         action='hr_loan_action'
         sequence="10"/> 
 
+<<<<<<< HEAD
          <menuitem
+=======
+         <!-- <menuitem
+>>>>>>> d9a4ae4 (aaaa)
         id="offdays_menu"
         name="الاجازات"
         parent = "hr_menus"
-        action='hr_offdays_action'
-        sequence="20"/> 
+        action='hrsystem.hr_offdays_action'
+        sequence="20"/>  -->
 
 
         <menuitem 
@@ -37,6 +41,26 @@
         action="sale.product_template_action"
         sequence="10"
         />
+        <menuitem 
+        id="repo_menu" 
+        name="التقارير"  
+        parent="hr_menus"
+        sequence="20"
+        />
+        <menuitem 
+        id="repo_menu2" 
+        name="كشف رواتب الموظفين"  
+        parent="repo_menu"
+        action="action_my_wizard"
+        sequence="20"
+        />
+         <menuitem 
+        id="repo_menu3" 
+        name="كشف راتب موظف "  
+        parent="repo_menu"
+        action="action_my_wizard2"
+        sequence="20"
+        />
         <!-- <menuitem 
         id="dept_menu" 
         name="الاقسام"  
@@ -44,6 +68,9 @@
         action="action_list_hrs_depts"
         sequence="10"
         /> -->
+<<<<<<< HEAD
      
+=======
+>>>>>>> d9a4ae4 (aaaa)
     </data>
 </odoo>
