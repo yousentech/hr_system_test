@@ -28,14 +28,14 @@
         name="الموظفون"  
         parent="hr_menus"
         action="hr.open_view_employee_list_my"
-        sequence="10"
+        sequence="30"
         />
          <menuitem 
         id="prod_menu" 
         name="الأصناف"  
         parent="hr_menus"
         action="sale.product_template_action"
-        sequence="10"
+        sequence="40"
         />
         <menuitem 
         id="repo_menu" 
