@@ -14,6 +14,7 @@
     'depends': ['base','account','hr','stock','report_xlsx'],
     'data': [   
                 'security/ir.model.access.csv',
+                'security/security.xml',
                 'views/loan.xml',
                 
                 'views/offdays.xml',

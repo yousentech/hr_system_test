@@ -10,7 +10,7 @@
             <field name="arch" type="xml">
             <!-- `<field name="custom_field"...>` block adds the new field `custom_field` to the invoice form view, positioned after the `amount_total` field. -->
                 <!-- <xpath expr="//field[@name='partner_shipping_id']" position="after">, uses an XPath expression to locate the desired position for adding the new field. It provides more flexibility in terms of targeting the exact location within the view. -->
-                 <field name="product_tag_ids" position="after">
+                 <field name="detailed_type" position="after">
                    <field name="products_select" />
                      <!-- <field name="departments_id" /> -->
                 </field>

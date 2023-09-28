@@ -23,7 +23,7 @@
                                     <field name="net_salary"/>
                                     <field name="rewards"/>
                                     <field name="discount"/>
-                                    <field name="month"/>
+                                    <field name="mounth"/>
                                     <field name="year"/>
                                     <field name="off_days"/>
                                 </tree>
