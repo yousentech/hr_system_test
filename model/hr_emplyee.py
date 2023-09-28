@@ -22,11 +22,6 @@ class MasterEmployee(models.Model):
     # odoo_emplo_ids=fields.One2many('hr.employee','emp_master_id')
     detail_ids=fields.One2many('hrsystem.details','emp_master_id')
    
-
-
-
-
-
             
 class Details(models.Model):
     _name='hrsystem.details'

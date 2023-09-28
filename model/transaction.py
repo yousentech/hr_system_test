@@ -8,7 +8,7 @@ class CashFlow(models.Model):
 class transaction_master(models.Model):
     _name = 'hrsystem.transaction'
     _description = 'hr system transaction'
-
+    
     _rec_name = 'month'
     _order = 'month ASC'
 

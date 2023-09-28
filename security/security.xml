@@ -26,18 +26,76 @@
             <field name="name">مدير</field>
             <field name="implied_ids" eval="[(4, ref('hrsystem_user_category_account'))]"/>
             <field name="category_id" ref="hrsystem_user_category"/>
-        </record>
-<!-- 
-        <record id="doctor_rule" model="ir.rule">
-          <field name="name">doctor rule</field>
-          <field name="model_id" ref="model_hospital_master_doctor"/>
-          <field name="domain_force">[('doctor_id.name', '=', 'علي محمد')]</field>
-          <field name="groups" eval="[(4, ref('hospital.hospital_user_category_doctor'))]"/>
-          <field name="perm_write" eval="False"/>
-          <field name="perm_create" eval="False"/>
-          <field name="perm_unlink" eval="False"/>
-        </record> 
 
+        </record>
+       <record model="ir.model.access" id="loan_accounter_access_right">
+        <field name="name">loan access right for accounter</field>
+        <field name="model_id" ref="model_hrsystem_loan"/>
+        <field name="group_id" ref="hr_system_test.hrsystem_user_category_account"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+     </record> 
+      <record model="ir.model.access" id="loan_employee_access_right">
+        <field name="name">loan access right for employee</field>
+        <field name="model_id" ref="model_hrsystem_loan"/>
+        <field name="group_id" ref="hr_system_test.hrsystem_user_category_employee"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">0</field>
+        <field name="perm_create">0</field>
+        <field name="perm_unlink">0</field>
+     </record> 
+      <record model="ir.model.access" id="trasaction_employee_access_right">
+        <field name="name">trasaction access right for employee</field>
+        <field name="model_id" ref="model_hrsystem_transaction"/>
+        <field name="group_id" ref="hr_system_test.hrsystem_user_category_employee"/>
+        <field name="perm_read">0</field>
+        <field name="perm_write">0</field>
+        <field name="perm_create">0</field>
+        <field name="perm_unlink">0</field>
+     </record> 
+     <record model="ir.model.access" id="trasaction_manager_access_right">
+        <field name="name">trasaction access right for manager</field>
+        <field name="model_id" ref="model_hrsystem_transaction"/>
+        <field name="group_id" ref="hr_system_test.hrsystem_user_category_manager"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+     </record> 
+     <record model="ir.model.access" id="trasaction_accounter_access_right">
+        <field name="name">trasaction access right for accounter</field>
+        <field name="model_id" ref="model_hrsystem_transaction"/>
+        <field name="group_id" ref="hr_system_test.hrsystem_user_category_account"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">0</field>
+     </record> 
+     <record model="ir.model.access" id="trasaction_accounter_access_right">
+        <field name="name">trasaction access right for accounter</field>
+        <field name="model_id" ref="model_hrsystem_transaction"/>
+        <field name="group_id" ref="hr_system_test.hrsystem_user_category_account"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">0</field>
+     </record> 
+ 
+        <record id="employee_rule" model="ir.rule">
+          <field name="name">employee rule</field>
+          <field name="model_id" ref="model_hr_employee"/>
+          <field name="domain_force">[('create_uid','=',user.id)]</field>
+          <field name="groups" eval="[(4, ref('hr_system_test.hrsystem_user_category_employee'))]"/>
+        </record> 
+         <record id="manager_rule" model="ir.rule">
+          <field name="name">manager rule</field>
+          <field name="model_id" ref="model_hr_employee"/>
+          <field name="domain_force">[]</field>
+          <field name="groups" eval="[(4, ref('hr_system_test.hrsystem_user_category_manager'))]"/>
+        </record> 
+<!--
          <record id="visitor_rule" model="ir.rule">
           <field name="name">visitor rule</field>
           <field name="model_id" ref="model_hospital_master_doctor"/>

@@ -9,6 +9,12 @@
             <field name="model">hrsystem.offdays</field>
             <field name="arch" type="xml">
                 <form>
+                  <header>
+                     <button string="اعتماد" name="confirm"  class="oe_highlight" type="object" states="not_posted" groups='hr_system_test.hrsystem_user_category_manager' />
+                     <button string="عدم اعتماد" name="unconfirm"  class="oe_highlight" type="object" states="posted" groups='hr_system_test.hrsystem_user_category_manager' />
+
+                     <field name="state" widget="statusbar" statusbar_visible="not_posted, posted"/>
+                  </header>
                     <sheet>
                         <group>
                             <group>
@@ -31,6 +37,7 @@
                   <field name="employee_id"></field>
                   <field name="month"></field>
                   <field name="number_of_days"></field>
+                  <field name="state"></field>
                 </tree>
             </field>
     </record>
@@ -43,6 +50,7 @@
                     <field name="employee_id"></field>
                     <field name="month"></field>
                   <field name="number_of_days"></field>
+                  <field name="state"></field>
                 </search>
             </field>
     </record>

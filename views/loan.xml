@@ -10,7 +10,7 @@
             <field name="arch" type="xml">
                 <form>
                   <header>
-                     <button string="اعتماد" name="confirm"  class="oe_highlight" type="object" states="not_posted"  />
+                     <button string="اعتماد" name="confirm"  class="oe_highlight" type="object" states="not_posted" groups='hr_system_test.hrsystem_user_category_manager' />
                      <field name="state" widget="statusbar" statusbar_visible="not_posted, posted"/>
                   </header>
                     <sheet>
