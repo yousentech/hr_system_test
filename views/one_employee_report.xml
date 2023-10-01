@@ -60,6 +60,7 @@
            
            <template id="report_generate_template22">
             <t t-call="web.html_container">
+             <t t-call="web.internal_layout">
                 <t t-foreach="docs" t-as="doc">
                   
 <head>
@@ -161,6 +162,7 @@
                      
                      
                   
+                </t>
                 </t>
             </t>
 

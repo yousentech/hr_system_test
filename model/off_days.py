@@ -18,12 +18,6 @@ class off_days(models.Model):
         return months
        
        month = fields.Selection(selection='_get_month_selection', string='الشهر', index=True)
-       def confirm(self):
-          self.write({'state': 'posted'})
-          
-       def unconfirm(self):
-              self.write({'state': 'not_posted'})
-       
        @api.model
        def _get_year_selection(self):
           current_year = datetime.datetime.now().year
@@ -31,3 +25,14 @@ class off_days(models.Model):
           return years
 
        year = fields.Selection(selection='_get_year_selection', string='السنة', index=True)
+       def confirm(self):
+          offday_in_this_month=self.env['hrsystem.offdays'].search([('state', '=', 'posted'),('employee_id.id', '=', self.employee_id.id),('month', '=', self.month),('year', '=', self.year)])
+          if offday_in_this_month.number_of_days > 3 :
+               raise ValidationError ("ايام الاجازة تجاوز الحد المسموح ") 
+          else:
+           self.write({'state': 'posted'})
+          
+       def unconfirm(self):
+              self.write({'state': 'not_posted'})
+       
+      
