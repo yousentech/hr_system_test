@@ -24,7 +24,8 @@
                         <group>
                          
                                 <field name="employee_id" attrs="{'readonly':[('state','=','posted')]}"></field>
-                                <field name="date" attrs="{'readonly':[('state','=','posted')]}"></field>
+                                <field name="month" attrs="{'readonly':[('state','=','posted')]}"></field>
+                                <field name="year" attrs="{'readonly':[('state','=','posted')]}"></field>
                                 <field name="journal_id" attrs="{'readonly':[('state','=','posted')]}"></field>
                                <field name="amount" attrs="{'readonly':[('state','=','posted')]}" ></field>
                            
@@ -41,7 +42,8 @@
             <field name="arch" type="xml">
                 <tree>
                    <field name="employee_id"></field>
-                   <field name="date"></field>
+                   <field name="month"></field>           
+                   <field name="year"></field>
                    <field name="journal_id"></field>
                    <field name="payment_id"></field>
                    <field name="amount"></field>
@@ -55,7 +57,8 @@
             <field name="arch" type="xml">
                 <search string="">
                      <field name="employee_id"></field>
-                   <field name="date"></field>
+                     <field name="month"></field>           
+                   <field name="year"></field>     
                    <field name="journal_id"></field>
                    <field name="amount"></field>
                    <group expand="0" string="Group By">
