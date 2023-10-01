@@ -26,7 +26,18 @@ class loan(models.Model):
         for record in self:
          if record.date > fields.Date.today():
             raise ValidationError("التاريخ لا يجب ان يكون في المستقبل")
-        
+          
+       def get_payment (self):
+            print("***************",self.payment_id.id)
+            self.ensure_one()
+            return {
+            'type': 'ir.actions.act_window',
+            'name': 'فاتورة السلفة ',
+            'view_mode': 'tree',
+            'res_model': 'account.payment',
+            'domain': [('id', '=', self.payment_id.id)],
+            'context': "{}"
+        } 
        def confirm(self):
             payment = self.env['account.payment'].create({
                 'date': self.date,

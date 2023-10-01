@@ -16,10 +16,7 @@
                 'security/ir.model.access.csv',
                 'security/security.xml',
                 'views/loan.xml',
-                
-              
                 'views/loan.xml',
-               
                 'views/offdays.xml',
                 # 'views/transaction.xml',
                 'views/transaction.xml',
@@ -27,7 +24,6 @@
                'views/employee.xml',
                'views/departments.xml',
                'views/products.xml',
-               'views/menus.xml',
                'views/employee_report.xml',
                 'views/one_employee_report.xml',
                 'views/menus.xml',
