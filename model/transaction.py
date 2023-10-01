@@ -55,7 +55,7 @@ class transaction_master(models.Model):
         for recorde in empolyees:
          
             invoice_details = []
-            get_employee_detail = self.env['hrsystem.details'].search([('emp_master_id', '=', item.id)])
+            get_employee_detail = self.env['hrsystem.transactiondetails'].search([('id', '=', item.id)])
             print(get_employee_detail,"===========get_employee_detail=====================")
             product_salary = self.env['product.product'].search([('products_select', '=', 'prod_salary')])
             product_salary_object = {
@@ -125,9 +125,17 @@ class transaction_master(models.Model):
         empolyees = self.env['hr.employee'].search([('emplo_checkbox', '=', 'True')])
         for item in empolyees:
             loan = self.env['hrsystem.loan'].search(
-                [('employee_id', '=', item.id),('month', '=', self.month)])
+                [('employee_id', '=', item.id),('month', '=', self.month),('state', '=', 'posted')])
+            loan_total = 0 
+            for line in loan:
+                loan_total += line.amount
             off_days = self.env['hrsystem.offdays'].search(
-                [('employee_id', '=', item.id),('month', '=', self.month)])
+                [('employee_id', '=', item.id),('month', '=', self.month),('state', '=', 'posted')])
+            
+            off_days_total = 0
+            for line in off_days:
+                off_days_total += line.number_of_days
+                
             employee = self.env['hrsystem.transactiondetails'].create({
                 'empolyee_id': item.id,
                 'net_salary': item.total_salary,
@@ -135,8 +143,8 @@ class transaction_master(models.Model):
                 'discount': 0,
                 'month': self.month,
                 'year': self.year,
-                'off_days': off_days.number_of_days,
-                'loan': loan.amount,
+                'off_days': off_days_total,
+                'loan': loan_total,
                 'total_salary':item.total_salary,
                 'transaction_id': self.id
             })
