@@ -8,19 +8,20 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-
+                        <button name="display_employees" string="إظهار الموظفين" type="object"/>
                         <button name="convirm" string="إعتماد" type="object" />
                         <!-- <button name="" string="إلغاء " type="object"/>   -->
-                        <button name="display_employees" string="إظهار الموظفين" type="object"/>
+                      
 
 
                     </header>
-
+              
                     <sheet>
-
+                       
                         <group>
                             <field name="month"></field>
                             <field name="year"></field>
+                            
                             <field name="transaction_details_ids">
                                 <tree string="إضافة" editable="bottom">
                                     <field name="empolyee_id"/>

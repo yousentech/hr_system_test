@@ -56,7 +56,7 @@ class transaction_master(models.Model):
          
             invoice_details = []
             get_employee_detail = self.env['hrsystem.details'].search([('emp_master_id', '=', item.id)])
-            
+            print(get_employee_detail,"===========get_employee_detail=====================")
             product_salary = self.env['product.product'].search([('products_select', '=', 'prod_salary')])
             product_salary_object = {
                 'product_id': product_salary.id,
@@ -85,6 +85,7 @@ class transaction_master(models.Model):
                 'price_unit': get_employee_detail.rewards
 
             }
+            print(get_employee_detail.rewards,"===========rewards=====================")
             invoice_details.append((0, 0, product_rewards_object))
             
             product_off_days = self.env['product.product'].search([('products_select', '=', 'prod_off_days')])
@@ -95,15 +96,13 @@ class transaction_master(models.Model):
 
             }
             invoice_details.append((0, 0, product_off_days_object))
-         
+            print(invoice_details,"========================")
             jurnal_value = self.env['account.journal'].search([('type', '=', 'purchase')])
-            # convert_month = self.month
-            # convert_year = self.year
-            # invoice_date = datetime.datetime(convert_year,convert_month,1)
+  
             invoice = self.env['account.move'].create({
                 'move_type': 'in_invoice',
                 'partner_id': recorde.partner_id.id,
-                'invoice_date':datetime.strptime(self.month, "%Y-%m-%d").date(),
+                'invoice_date':datetime.datetime.now(),
                 'journal_id': jurnal_value.id,
                 'invoice_line_ids': invoice_details,
                 'master_id': self.id
@@ -141,6 +140,14 @@ class transaction_master(models.Model):
                 'total_salary':item.total_salary,
                 'transaction_id': self.id
             })
+        total = 0
+        total = employee.net_salary - employee.loan
+        employee.net_salary = total
+        
+        compute_discount = employee.net_salary / 30
+        employee.discount = compute_discount * employee.off_days
+        amount_after_discount = employee.net_salary - employee.discount
+        employee.net_salary = amount_after_discount
 
 
 class transaction_details(models.Model):
@@ -164,9 +171,11 @@ class transaction_details(models.Model):
         total = self.rewards + self.net_salary
         self.net_salary = total
 
-    @api.onchange('off_days')
-    def compute_discount(self):
-        compute_discount = self.net_salary / 30
-        self.discount = compute_discount * self.off_days
-        amount_after_discount = self.net_salary - self.discount
-        self.net_salary = amount_after_discount
+    # @api.onchange('off_days')
+    # def compute_discount(self):
+    #     compute_discount = self.net_salary / 30
+    #     self.discount = compute_discount * self.off_days
+    #     amount_after_discount = self.net_salary - self.discount
+    #     self.net_salary = amount_after_discount
+        
+   
