@@ -61,17 +61,11 @@
            
            <template id="report_generate_template22">
             <t t-call="web.html_container">
-<<<<<<< HEAD
              <t t-call="web.internal_layout">
-                <t t-foreach="docs" t-as="doc">
                   
 <head>
   <link href="/hr_system_test/static/src/css/style.css" rel="stylesheet" />
   </head>
-=======
-             <t t-call="web.external_layout">
-   
->>>>>>> 2377ee1 (add reports design)
                        <!-- <style>
 </style> -->  <link href="/hr_system_test/static/src/css/style.css" rel="stylesheet" />
 <div class='page'>
