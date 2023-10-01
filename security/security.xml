@@ -89,6 +89,18 @@
           <field name="domain_force">[('create_uid','=',user.id)]</field>
           <field name="groups" eval="[(4, ref('hr_system_test.hrsystem_user_category_employee'))]"/>
         </record> 
+        <record id="loan_employee_rule" model="ir.rule">
+          <field name="name">loan employee rule</field>
+          <field name="model_id" ref="model_hrsystem_loan"/>
+          <field name="domain_force">[('create_uid','=',user.id)]</field>
+          <field name="groups" eval="[(4, ref('hr_system_test.hrsystem_user_category_employee'))]"/>
+        </record> 
+         <record id="off_days_employee_rule" model="ir.rule">
+          <field name="name">offdays employee rule</field>
+          <field name="model_id" ref="model_hrsystem_offdays"/>
+          <field name="domain_force">[('create_uid','=',user.id)]</field>
+          <field name="groups" eval="[(4, ref('hr_system_test.hrsystem_user_category_employee'))]"/>
+        </record> 
          <record id="manager_rule" model="ir.rule">
           <field name="name">manager rule</field>
           <field name="model_id" ref="model_hr_employee"/>

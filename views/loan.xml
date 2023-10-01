@@ -14,12 +14,19 @@
                      <field name="state" widget="statusbar" statusbar_visible="not_posted, posted"/>
                   </header>
                     <sheet>
+                     <div name="button_box" position="inside">
+                        <button class="oe_stat_button" type="object" name="get_payment" string="الفاتورة"
+                          icon="fa-history">
+                          <!-- <field string="Vehicle" name="vehicle_count" widget="statinfo"/> -->
+                       
+                        </button>
+                        </div>
                         <group>
                          
-                                <field name="employee_id"></field>
-                                <field name="date"></field>
-                                <field name="journal_id"></field>
-                               <field name="amount"></field>
+                                <field name="employee_id" attrs="{'readonly':[('state','=','posted')]}"></field>
+                                <field name="date" attrs="{'readonly':[('state','=','posted')]}"></field>
+                                <field name="journal_id" attrs="{'readonly':[('state','=','posted')]}"></field>
+                               <field name="amount" attrs="{'readonly':[('state','=','posted')]}" ></field>
                            
                         </group>
                     </sheet>

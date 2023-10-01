@@ -15,13 +15,7 @@
         action='hr_loan_action'
         sequence="10"/> 
 
-         <!-- <menuitem
-        id="offdays_menu"
-        name="الإجازات"
-        parent = "hr_menus"
-        action='hrsystem.hr_offdays_action'
-        sequence="20"/>   -->
-
+        
 
         <menuitem 
         id="employee_menu" 
@@ -41,14 +35,14 @@
         id="repo_menu" 
         name="التقارير"  
         parent="hr_menus"
-        sequence="20"
+        sequence="60"
         />
         <menuitem 
         id="repo_menu2" 
         name="كشف رواتب الموظفين"  
         parent="repo_menu"
         action="action_my_wizard"
-        sequence="20"
+        sequence="10"
         />
          <menuitem 
         id="repo_menu3" 
@@ -64,10 +58,8 @@
         action="action_list_hrs_depts"
         sequence="10"
         /> -->
-
-
         <menuitem id="transaction_menu" name="الرواتب"
-        parent = "hr_menus" action='transaction_action' sequence="10"/>
+        parent = "hr_menus" action='transaction_action' sequence="70"/>
 
     </data>
 </odoo>
