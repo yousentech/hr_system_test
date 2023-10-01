@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
      <!--==report==============-->
@@ -60,149 +61,66 @@
         /> -->
            
            <template id="report_generate_template2">
-            <t t-call="web.html_container">
-                <t t-call="web.external_layout"> 
-<style>
-        /*------------------------------------------invoice---------------------*/
-        .page {
-                          size: A4;
-                          margin: 0;
-                           padding: 0;
-                        }
-                     
-    h1,h2,h3,h4,h5,h6{
-        margin: 0;
-        padding: 0;
-    }
-    p{
-        margin: 0;
-        padding: 0;
-    }
-    .container2{
-        width: 50%;
-        margin-right: auto;
-        margin-left: auto;
-        margin-top: 20px;
-    }
-    .brand-section{
-    background-color: green;
-    padding: 10px 40px;
-    }
-    .logo{
-        width: 50%;
-    }
+         <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                  
+<head>
+  <link href="/hr_system_test/static/src/css/style.css" rel="stylesheet" />
 
-    .row{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .col-6{
-        width: 50%;
-        flex: 0 0 auto;
-    }
-    .text-white{
-        color: #fff;
-    }
-    .company-details{
-        float: right;
-        text-align: right;
-    }
-    .body-section{
-        padding: 16px;
-        border: 3px solid green
-    }
-    .heading{
-        font-size: 20px;
-        margin-bottom: 08px;
-    }
-    .sub-heading{
-        color: #262626;
-        margin-bottom: 05px;
-    }
-    table{
-        background-color: #fff;
-        width: 100%;
-        border-collapse: collapse;
-    }
-    table thead tr{
-        border: 1px solid #111;
-        background-color: #f2f2f2;
-    }
-    table td {
-        vertical-align: middle !important;
-        text-align: center;
-    }
-    table th, table td {
-        padding-top: 08px;
-        padding-bottom: 08px;
-    }
-    .table-bordered{
-        box-shadow: 0px 0px 5px 0.5px gray;
-    }
-    .table-bordered td, .table-bordered th {
-        border: 1px solid #dee2e6;
-    }
-    .text-right{
-        text-align: end;
-    }
-    .w-20{
-        width: 20%;
-    }
-    .float-right{
-        float: right;
-    }
-</style>
-                    <div class="page">
-                       <div class="container2">
-    <div class="brand-section">
-        <div class="row">
-            <div class="col-6">
-                    <h1 class="text-white">BOOKING INVOICE</h1>
-                </div>
-                    <div class="col-6">
-                        <div class="company-details">
-                            <p class="text-white">assdad asd  asda asdad a sd</p>
-                            <p class="text-white">assdad asd asd</p>
-                            <p class="text-white">+91 888555XXXX</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-        <div class="body-section">
-            <div class="row">
-                <div class="col-6">
-                    <h2 class="heading">Invoice No.: 001</h2>
-                    <p class="sub-heading">Tracking No. fabcart2025 </p>
-                    <p class="sub-heading">From Date:<span t-esc="datas['month']" /> </p>
-                    <p class="sub-heading">Email Address: @i.Accounts.Email </p>
-                </div>
-                <div class="col-6">
-                    <p class="sub-heading">Full Name:<span t-esc="datas['year']"/> </p>
-                    <p class="sub-heading">Phone Number:@i.mobile  </p>
-                </div>
-            </div>
+  </head>
+                       <!-- <style>
+</style> -->
+
+                                  
+<body>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+
+     
+        <div style=" display: flex;
+                            flex-direction: column; justify-content: center;
+                            align-items: center;
+                            text-align: center;position: relative;">
+          <h1>تقرير كشف رواتب الموظفين</h1>
+          <div style=" display: flex;
+                            flex-direction: row; justify-content: center;
+                            align-items: center;
+                            text-align: center;position: relative;">
+            <span style="font-size: 33px;color: gray;"  t-esc="datas['year']"/> 
+            <span style="font-size: 33px;color: gray;">/</span>
+          <span style="font-size: 33px;color: gray;" t-esc="datas['month']" /> 
+          </div>
+          
         </div>
-    
-        <div class="body-section">
-            <h3 class="heading">DATA</h3>
-            <br />
-            <table class="table-bordered">
+         <div class=" hero-img" >
+          <img src="/hr_system_test/static/src/img/hero-img.png"  style="height: 17rem; width: 19rem;" />
+        </div>
+     
+   
+
+  </section><!-- End Hero -->
+
+  <br/>
+  <br/>
+
+     <table >
                 <thead>
                     <tr>
-                        <th class="w-20">اسم الموظف</th>
-                        <th class="w-20">صافي الراتب</th>
-                        <th class="w-20">المكافأة</th>
-                        <th class="w-20">الخصم</th>
-                        <th class="w-20">الشهر</th>
-                        <th class="w-20"> السنة</th>
-                        <th class="w-20"> أيام الاجازات</th>
+                        <th >اسم الموظف</th>
+                        <th >صافي الراتب</th>
+                        <th >المكافأة</th>
+                        <th >الخصم</th>
+                        <th >الشهر</th>
+                        <th > السنة</th>
+                        <th > أيام الاجازات</th>
                        
                     </tr>
                 </thead>
                 <tbody>
-                    <t t-foreach="docs" t-as="bill">
-                       <t t-foreach="bill.transaction_details_ids" t-as="course">
+                    <t t-foreach="docs" t-as="course">
+                       <!-- <t t-foreach="bill.transaction_details_ids" t-as="course"> -->
                     <tr>
                         <!-- <td><span t-esc="bill.partner_names"/></td> -->
                         <td><span t-field="course.empolyee_id"/></td>
@@ -218,30 +136,31 @@
                                   
                        
                      </t>
-                </t>
+                <!-- </t> -->
                 </tbody>
             </table>
-            <br />
-            <!-- <h3 class="heading">Payment Status: Paid</h3>
-            <h3 class="heading">Payment Mode: Cash on Delivery</h3> -->
-        </div>
-    
-        <div class="body-section">
-            <p>
-                @Copyright 2021 - Fabcart. All rights reserved.
-                <a href="#" class="float-right">www.fundaofwebit.com</a>
-            </p>
-        </div>
-        <br />
-      
-    
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div >
+      <div class="copyright">
+     Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+      </div>
+     
     </div>
-                    </div>
-                </t> 
-             </t> 
+  </footer><!-- End Footer -->
+
+
+</body>     
+                     
+                     
+                  
+                </t>
+            </t>
+
+
+
         </template>
     </data>
 </odoo>
 
-
-   

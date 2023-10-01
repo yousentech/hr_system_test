@@ -22,20 +22,20 @@
         name="الموظفون"  
         parent="hr_menus"
         action="hr.open_view_employee_list_my"
-        sequence="30"
+        sequence="10"
         />
          <menuitem 
         id="prod_menu" 
         name="الأصناف"  
         parent="hr_menus"
         action="sale.product_template_action"
-        sequence="40"
+        sequence="10"
         />
-        <!-- <menuitem 
+        <menuitem 
         id="repo_menu" 
         name="التقارير"  
         parent="hr_menus"
-        sequence="60"
+        sequence="10"
         />
         <menuitem 
         id="repo_menu2" 
@@ -49,17 +49,20 @@
         name="كشف راتب موظف "  
         parent="repo_menu"
         action="action_my_wizard2"
-        sequence="20"
-        /> -->
-        <!-- <menuitem 
+        sequence="10"
+        />
+        <menuitem 
         id="dept_menu" 
         name="الاقسام"  
         parent="hr_menus"
-        action="action_list_hrs_depts"
+        action="hr.hr_department_kanban_action"
         sequence="10"
-        /> -->
+        /> 
+
+
         <menuitem id="transaction_menu" name="الرواتب"
         parent = "hr_menus" action='transaction_action' sequence="70"/>
 
+     
     </data>
 </odoo>

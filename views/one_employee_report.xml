@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <form string="My Wizard">
                     <group>
-                        <field name="name"/>
+                        <field name="emplo_id"/>
                     </group>
                     <footer>
                         <button name="print_report" string="Print Report pdf" type="object" class="btn-primary"/>
@@ -48,12 +48,12 @@
         />
      
         <!-- <report
-            id="bill_report_xlsx2"
+            id="doc_report_xlsx2"
             model="openacademy.wizard"
             string="طباعة"
             report_type="xlsx"
-            name="openacademy.bill_report_view_template"
-            file="openacademy.bill_report_view_template"
+            name="openacademy.doc_report_view_template"
+            file="openacademy.doc_report_view_template"
             attachment_use="False"
             
         /> -->
@@ -61,29 +61,38 @@
            <template id="report_generate_template22">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
-                    <div>
-                        <h1>Invoice Report</h1>
-                       <style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    
-    th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-    
-    th {
-        background-color: #f2f2f2;
-        font-weight: bold;
-    }
-    
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-</style>
+                  
+<head>
+  <link href="/hr_system_test/static/src/css/style.css" rel="stylesheet" />
+  </head>
+                       <!-- <style>
+</style> -->
+
+                                  
+<body>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+
+     
+        <div style=" display: flex;
+                            flex-direction: column; justify-content: center;
+                            align-items: center;
+                            text-align: center;position: relative;">
+          <h1>تقرير كشف راتب الموظف</h1>
+         <span style="font-size: 33px;color: gray;"  t-esc="datas['name']"/> 
+        </div>
+        <div class=" hero-img" >
+          <img src="/hr_system_test/static/src/img/hero-img.png"  style="height: 17rem; width: 19rem;" />
+        </div>
+     
+   
+
+  </section><!-- End Hero -->
+
+  <br/>
+  <br/>
 
 <table>
     <tr>
@@ -97,37 +106,37 @@
 
     </tr>
     <tr>
-         <td> <span t-esc="bill.name"/></td>
-                        <td> <span t-esc="bill.total_salary"/></td>
-                        <!-- <td> <span t-esc="bill.emplo_checkbox"/></td> -->
-                        <td> <span t-esc="bill.mobile_phone"/></td>
-                        <td><span t-esc="bill.job_id"/></td>
-                        <td><span t-esc="bill.department_id"/></td>
+         <td> <span t-esc="doc.name"/></td>
+                        <td> <span t-esc="doc.total_salary"/></td>
+                        <!-- <td> <span t-esc="doc.emplo_checkbox"/></td> -->
+                        <td> <span t-esc="doc.mobile_phone"/></td>
+                        <td><span t-esc="doc.job_id.name"/></td>
+                        <td><span t-esc="doc.department_id.name"/></td>
     </tr>
 </table>
                        
                         <!-- cource inside-->
-                        <t t-if="doc.detail_id">
-                            <p>نفاصيل الموظف  :</p>
+                      <br />
+                            <h3 style="text-align: right;">نفاصيل الموظف  :</h3>
                             
 <table>
     <tr>
    
-                        <th class="w-20">صافي الراتب</th>
-                        <th class="w-20">المكافأة</th>
-                        <th class="w-20">الخصم</th>
-                        <th class="w-20">الشهر</th>
-                        <th class="w-20"> السنة</th>
-                        <th class="w-20"> أيام الاجازات</th>
+                        <th >صافي الراتب </th>
+                        <th >المكافأة</th>
+                        <th >الخصم</th>
+                        <th >الشهر</th>
+                        <th > السنة</th>
+                        <th > أيام الاجازات</th>
 
     </tr>
-     <t t-foreach="doc.detail_id" t-as="course">
+     <t t-foreach="doc.detail_ids" t-as="course">
     <tr>
     
        <td><span t-field="course.net_salary"/></td>
                                         <td><span t-field="course.rewards"/></td>
                                         <td><span t-field="course.discount"/></td>
-                                        <td><span t-field="course.month"/></td>
+                                        <td><span t-field="course.mounth"/></td>
                                          <td><span t-field="course.year"/></td>
                                         <td><span t-field="course.off_days"/></td>
 
@@ -135,12 +144,28 @@
                                     </t>
 
 </table>
-                           
-                        </t>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div >
+      <div class="copyright">
+     Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+      </div>
+     
+    </div>
+  </footer><!-- End Footer -->
+
+
+</body>     
                      
-                    </div>
+                     
+                  
                 </t>
             </t>
+
+
+
         </template>
     </data>
 </odoo>
