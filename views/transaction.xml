@@ -8,8 +8,8 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="display_employees" string="إظهار الموظفين" type="object"/>
-                        <button name="convirm" string="إعتماد" type="object" />
+                        <!-- <button name="display_employees" string="إظهار الموظفين" type="object"/> -->
+                        <button name="convirm" class="oe_highlight" string="إعتماد" type="object" />
                         <!-- <button name="" string="إلغاء " type="object"/>   -->
                       
 
@@ -17,7 +17,12 @@
                     </header>
               
                     <sheet>
-                       
+                        <div name="button_box" position="inside">
+                            <button class="oe_stat_button" type="object" name="display_employees" string="إظهار الموظفين"
+                              icon="fa-calendar">
+                           
+                            </button>
+                            </div>
                         <group>
                             <field name="month"></field>
                             <field name="year"></field>
@@ -26,13 +31,13 @@
                                 <tree string="إضافة" editable="bottom">
                                     <field name="empolyee_id"/>
                                     <field name="off_days"/>
-                                    <field name="discount"/>
+                                    <field name="discount" decoration-danger="True"/>
                                     <field name="loan"/>
-                                    <field name="rewards"/>
+                                    <field name="rewards" decoration-success="True"/>
                                     <field name="month"/>
                                     <field name="year"/>
                                     <field name="total_salary"/>
-                                    <field name="net_salary"/>
+                                    <field name="net_salary" decoration-info="True"/>
                                 </tree>
                             </field>
                         </group>
