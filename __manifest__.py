@@ -37,7 +37,7 @@
 },
      
 'qweb': [
-    'static/src/fonts/K2FhfZBRmr9vQ1pHEey6GIGo8_pv3myYjuXwe55ijDz-oQ.woff2',
+    'static/src/fonts/myfont.woff2',
 ],
  'css': [
         'static/src/css/style.css',

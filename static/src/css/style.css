@@ -5,10 +5,11 @@
   font-style:normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/hr_system_test/static/src/fonts/K2FhfZBRmr9vQ1pHEey6GIGo8_pv3myYjuXwe55ijDz-oQ.woff2");
+  src: url("/custom_addons/hr_system_test/static/src/fonts/myfont.woff2") format('truetype');
   unicode-range: U+0600-06FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE80-FEFC;
 
 }
+
 *{ font-family: 'El Messiri', sans-serif;}
 
 
