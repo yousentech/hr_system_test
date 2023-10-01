@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
      <!--==report==============-->
@@ -60,19 +61,23 @@
            
            <template id="report_generate_template22">
             <t t-call="web.html_container">
+<<<<<<< HEAD
              <t t-call="web.internal_layout">
                 <t t-foreach="docs" t-as="doc">
                   
 <head>
   <link href="/hr_system_test/static/src/css/style.css" rel="stylesheet" />
   </head>
+=======
+             <t t-call="web.external_layout">
+   
+>>>>>>> 2377ee1 (add reports design)
                        <!-- <style>
-</style> -->
+</style> -->  <link href="/hr_system_test/static/src/css/style.css" rel="stylesheet" />
+<div class='page'>
 
-                                  
-<body>
-
-
+  <div class="oe_structure">
+  <center>
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
 
@@ -80,12 +85,12 @@
         <div style=" display: flex;
                             flex-direction: column; justify-content: center;
                             align-items: center;
-                            text-align: center;position: relative;">
+                            text-align: center;position: relative; margin-top:8px ;">
           <h1>تقرير كشف راتب الموظف</h1>
          <span style="font-size: 33px;color: gray;"  t-esc="datas['name']"/> 
         </div>
         <div class=" hero-img" >
-          <img src="/hr_system_test/static/src/img/hero-img.png"  style="height: 17rem; width: 19rem;" />
+          <img src="/hr_system_test/static/src/img/hero-img.png"  style="height: 13rem; width: 15rem;" />
         </div>
      
    
@@ -94,7 +99,9 @@
 
   <br/>
   <br/>
-
+ <br/>
+  <br/> 
+  <br/>
 <table>
     <tr>
         <th> إسم الموظف'</th>
@@ -106,6 +113,7 @@
            <th> القسم"</th>
 
     </tr>
+      <t t-foreach="docs" t-as="doc">
     <tr>
          <td> <span t-esc="doc.name"/></td>
                         <td> <span t-esc="doc.total_salary"/></td>
@@ -114,6 +122,7 @@
                         <td><span t-esc="doc.job_id.name"/></td>
                         <td><span t-esc="doc.department_id.name"/></td>
     </tr>
+    </t>
 </table>
                        
                         <!-- cource inside-->
@@ -157,18 +166,33 @@
     </div>
   </footer><!-- End Footer -->
 
-
-</body>     
+</center>
+</div>
+</div>     
                      
-                     
-                  
+         
                 </t>
-                </t>
-            </t>
-
-
+          
+ </t>
 
         </template>
+<!-- 
+    <record id="YOUR_FORMAT_ID" model="report.paperformat">
+    <field name="name">YOUR PAPER FORMAT NAME</field>
+    <field name="default" eval="True" />
+    <field name="format">A4</field>
+    <field name="page_height">0</field>
+    <field name="page_width">0</field>
+    <field name="orientation">Portrait</field>
+    <field name="margin_top">20</field>
+    <field name="margin_bottom">23</field>
+    <field name="margin_left">7</field>
+    <field name="margin_right">7</field>
+    <field name="header_line" eval="False" />
+    <field name="header_spacing">15</field>
+    <field name="dpi">90</field>
+    <field name="report_ids" eval="[(4, ref('hr_system_test.report_generate_template22'))]"></field>
+</record> -->
     </data>
 </odoo>
 
