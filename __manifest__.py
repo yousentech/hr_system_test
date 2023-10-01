@@ -30,18 +30,18 @@
                 'views/menus.xml',
               'security/ir.model.access.csv',
          ],
-'assets':{
-    'web.report_assets_common':[
-          'static/src/fonts/K2FhfZBRmr9vQ1pHEey6GIGo8_pv3myYjuXwe55ijDz-oQ.woff2',
-    ]
-},
+# 'assets':{
+#     'web.report_assets_common':[
+#           'static/src/fonts/K2FhfZBRmr9vQ1pHEey6GIGo8_pv3myYjuXwe55ijDz-oQ.woff2',
+#     ]
+# },
      
-'qweb': [
-    'static/src/fonts/myfont.woff2',
-],
- 'css': [
-        'static/src/css/style.css',
-    ],
+# 'qweb': [
+#     'static/src/fonts/myfont.woff2',
+# ],
+#  'css': [
+#         'static/src/css/style.css',
+#     ],
 'images':[
      'static/src/img/code.png',
     'static/src/img/hero-bg.png',
