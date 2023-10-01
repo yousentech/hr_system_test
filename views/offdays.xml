@@ -18,10 +18,10 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="employee_id"></field>
-                                 <field name="month"></field>
-                                 <field name="year"></field>
-                                <field name="number_of_days"></field>
+                                <field name="employee_id" attrs="{'readonly':[('state','=','posted')]}"></field>
+                                 <field name="month"  attrs="{'readonly':[('state','=','posted')]}"></field>
+                                 <field name="year"  attrs="{'readonly':[('state','=','posted')]}"></field>
+                                <field name="number_of_days"  attrs="{'readonly':[('state','=','posted')]}"></field>
                             </group>
                         </group>
                     </sheet>
