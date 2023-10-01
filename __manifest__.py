@@ -30,6 +30,11 @@
                 'views/menus.xml',
               'security/ir.model.access.csv',
          ],
+'assets':{
+    'web.report_assets_common':[
+          'static/src/fonts/K2FhfZBRmr9vQ1pHEey6GIGo8_pv3myYjuXwe55ijDz-oQ.woff2',
+    ]
+},
      
 'qweb': [
     'static/src/fonts/K2FhfZBRmr9vQ1pHEey6GIGo8_pv3myYjuXwe55ijDz-oQ.woff2',
