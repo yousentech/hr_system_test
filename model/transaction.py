@@ -125,9 +125,9 @@ class transaction_master(models.Model):
         empolyees = self.env['hr.employee'].search([('emplo_checkbox', '=', 'True')])
         for item in empolyees:
             loan = self.env['hrsystem.loan'].search(
-                [('employee_id', '=', item.id),('employee_id', '=', self.month)])
+                [('employee_id', '=', item.id),('month', '=', self.month)])
             off_days = self.env['hrsystem.offdays'].search(
-                [('employee_id', '=', item.id)])
+                [('employee_id', '=', item.id),('month', '=', self.month)])
             employee = self.env['hrsystem.transactiondetails'].create({
                 'empolyee_id': item.id,
                 'net_salary': item.total_salary,

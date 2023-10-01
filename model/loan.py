@@ -31,12 +31,12 @@ class loan(models.Model):
           return years
 
        year = fields.Selection(selection='_get_year_selection', string='السنة', index=True)
-       def unlink(self):
+       # def unlink(self):
            
-              if self.state == 'posted':
-                raise ValidationError ("لا يمكن الحذف  ")  
+       #        if self.state == 'posted':
+       #          raise ValidationError ("لا يمكن الحذف  ")  
          
-              return super(loan,self).unlink()
+       #        return super(loan,self).unlink()
  
           
        def get_payment (self):
