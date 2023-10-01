@@ -22,7 +22,6 @@ class transaction_master(models.Model):
 
     @api.model
     def _get_month_selection(self):
-       #  current_month = datetime.month
         months = [(str(i), datetime.date(1900, i, 1).strftime('%B')) for i in range(1, 13)]
         return months
        
@@ -56,7 +55,7 @@ class transaction_master(models.Model):
          
             invoice_details = []
             get_employee_detail = self.env['hrsystem.transactiondetails'].search([('id', '=', item.id)])
-            print(get_employee_detail,"===========get_employee_detail=====================")
+            # print(get_employee_detail,"===========get_employee_detail=====================")
             product_salary = self.env['product.product'].search([('products_select', '=', 'prod_salary')])
             product_salary_object = {
                 'product_id': product_salary.id,
@@ -85,7 +84,7 @@ class transaction_master(models.Model):
                 'price_unit': get_employee_detail.rewards
 
             }
-            print(get_employee_detail.rewards,"===========rewards=====================")
+            # print(get_employee_detail.rewards,"===========rewards=====================")
             invoice_details.append((0, 0, product_rewards_object))
             
             product_off_days = self.env['product.product'].search([('products_select', '=', 'prod_off_days')])
@@ -96,7 +95,7 @@ class transaction_master(models.Model):
 
             }
             invoice_details.append((0, 0, product_off_days_object))
-            print(invoice_details,"========================")
+            # print(invoice_details,"========================")
             jurnal_value = self.env['account.journal'].search([('type', '=', 'purchase')])
   
             invoice = self.env['account.move'].create({
@@ -179,11 +178,6 @@ class transaction_details(models.Model):
         total = self.rewards + self.net_salary
         self.net_salary = total
 
-    # @api.onchange('off_days')
-    # def compute_discount(self):
-    #     compute_discount = self.net_salary / 30
-    #     self.discount = compute_discount * self.off_days
-    #     amount_after_discount = self.net_salary - self.discount
-    #     self.net_salary = amount_after_discount
+
         
    
