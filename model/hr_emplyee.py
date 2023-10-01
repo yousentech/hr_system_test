@@ -8,7 +8,7 @@ class MasterEmployee(models.Model):
     _inherit='hr.employee'
     _rec_name='name'
     total_salary=fields.Float(string="إجمالي الراتب",help="long desc",index=True)
-    password=fields.Char(string="كلمة المرور ",help="long desc",index=True)
+   # password=fields.Char(string="كلمة المرور ",help="long desc",index=True)
     emplo_checkbox = fields.Boolean(string='موظف لدينا')
     partner_id=fields.Many2one('res.partner',string='اسم الشريك ')
     _sql_constraints = [

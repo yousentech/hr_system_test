@@ -13,7 +13,7 @@
                  <field name="work_email" position="after">
                    <field name="total_salary" />
                     <field name="emplo_checkbox" />
-                    <field name="password" />
+                   <!-- <field name="password" /> -->
                      <field name="partner_id" />
                      <!-- <field name="departments_id" /> -->
                 </field>
