@@ -13,7 +13,7 @@
     'maintainer': 'yousen Techno Solutions',
     'depends': ['base','account','hr','stock','report_xlsx'],
     'data': [   
-                'security/ir.model.access.csv',
+                
                 'security/security.xml',
                 'views/loan.xml',
                 'views/loan.xml',
@@ -24,12 +24,27 @@
                'views/employee.xml',
                'views/departments.xml',
                'views/products.xml',
+            
                'views/employee_report.xml',
                 'views/one_employee_report.xml',
                 'views/menus.xml',
-              
+              'security/ir.model.access.csv',
          ],
      
+'qweb': [
+    'static/src/fonts/K2FhfZBRmr9vQ1pHEey6GIGo8_pv3myYjuXwe55ijDz-oQ.woff2',
+],
+ 'css': [
+        'static/src/css/style.css',
+    ],
+'images':[
+     'static/src/img/code.png',
+    'static/src/img/hero-bg.png',
+ 'static/src/img/hero-img.png', 
+ 'static/src/img/team-shape.png',
+   
+],
+
     'license': 'LGPL-3',
     'images': [],
     'sequence':'-100',
