@@ -1,5 +1,6 @@
 from odoo import api, models, fields, exceptions, _
 import datetime
+# from datetime import datetime
 class CashFlow(models.Model):
    _inherit = 'account.move'
 
@@ -12,12 +13,30 @@ class transaction_master(models.Model):
     _rec_name = 'month'
     _order = 'month ASC'
 
-    month = fields.Date(string="الشهر")
-    year = fields.Date(string="السنة")
+    # month = fields.Date(string="الشهر")
+    # year = fields.Date(string="السنة")
   
     transaction_details_ids = fields.One2many(
         'hrsystem.transactiondetails', 'transaction_id')
 
+
+    @api.model
+    def _get_month_selection(self):
+       #  current_month = datetime.month
+        months = [(str(i), datetime.date(1900, i, 1).strftime('%B')) for i in range(1, 13)]
+        return months
+       
+       
+    month = fields.Selection(selection='_get_month_selection', string='الشهر', index=True)
+
+    @api.model
+    def _get_year_selection(self):
+        current_year = datetime.datetime.now().year
+        years = [(str(i), str(i)) for i in range(current_year - 10, current_year + 1)]
+        return years
+
+    year = fields.Selection(selection='_get_year_selection', string='السنة', index=True)
+    
     def convirm(self):
         empolyees = self.env['hr.employee'].search([('emplo_checkbox', '=', 'True')])
 
@@ -72,16 +91,19 @@ class transaction_master(models.Model):
             product_off_days_object = {
                 'product_id': product_off_days.id,
                 'quantity': 1,
-                'price_unit': recorde.total_salary
+                'price_unit': get_employee_detail.discount
 
             }
             invoice_details.append((0, 0, product_off_days_object))
          
             jurnal_value = self.env['account.journal'].search([('type', '=', 'purchase')])
+            # convert_month = self.month
+            # convert_year = self.year
+            # invoice_date = datetime.datetime(convert_year,convert_month,1)
             invoice = self.env['account.move'].create({
                 'move_type': 'in_invoice',
                 'partner_id': recorde.partner_id.id,
-                'invoice_date': self.month,
+                'invoice_date':datetime.strptime(self.month, "%Y-%m-%d").date(),
                 'journal_id': jurnal_value.id,
                 'invoice_line_ids': invoice_details,
                 'master_id': self.id
@@ -116,6 +138,7 @@ class transaction_master(models.Model):
                 'year': self.year,
                 'off_days': off_days.number_of_days,
                 'loan': loan.amount,
+                'total_salary':item.total_salary,
                 'transaction_id': self.id
             })
 
@@ -128,10 +151,11 @@ class transaction_details(models.Model):
     net_salary = fields.Float(string="صافي الراتب",)
     rewards = fields.Float(string="المكافات ",)
     discount = fields.Float(string="الخصومات ",)
-    month = fields.Date(string="الشهر ",)
-    year = fields.Date(string="السنة ",)
+    month = fields.Char(string="الشهر ",)
+    year = fields.Char(string="السنة ",)
     off_days = fields.Integer(string="أيام الغياب")
     loan = fields.Float(string="السلفات ",)
+    total_salary=fields.Float(string="إجمالي الراتب")
     transaction_id = fields.Many2one('hrsystem.transaction')
 
     @api.onchange('rewards')
@@ -140,7 +164,7 @@ class transaction_details(models.Model):
         total = self.rewards + self.net_salary
         self.net_salary = total
 
-    @api.depends('off_days')
+    @api.onchange('off_days')
     def compute_discount(self):
         compute_discount = self.net_salary / 30
         self.discount = compute_discount * self.off_days

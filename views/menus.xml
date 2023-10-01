@@ -37,7 +37,7 @@
         action="sale.product_template_action"
         sequence="40"
         />
-        <menuitem 
+        <!-- <menuitem 
         id="repo_menu" 
         name="التقارير"  
         parent="hr_menus"
@@ -56,7 +56,7 @@
         parent="repo_menu"
         action="action_my_wizard2"
         sequence="20"
-        />
+        /> -->
         <!-- <menuitem 
         id="dept_menu" 
         name="الاقسام"  
