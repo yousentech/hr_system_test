@@ -73,7 +73,8 @@ class loan(models.Model):
                 amount_after_discount = employee.total_salary - discount
             if amount_of_loans > amount_after_discount:   
                raise ValidationError ("لا يمكن اضافة سلفة  ") 
-              
+            elif self.amount > employee.total_salary:
+                raise ValidationError ("مبلغ السلفة اكثر من الراتب     ") 
             else:
                   
              payment = self.env['account.payment'].create({

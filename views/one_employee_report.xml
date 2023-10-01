@@ -62,12 +62,39 @@
            <template id="report_generate_template22">
             <t t-call="web.html_container">
              <t t-call="web.internal_layout">
+              
                   
 <head>
   <link href="/hr_system_test/static/src/css/style.css" rel="stylesheet" />
   </head>
                        <!-- <style>
 </style> -->  <link href="/hr_system_test/static/src/css/style.css" rel="stylesheet" />
+                      <style>
+@font-face {
+                          
+  font-family: 'El Messiri';
+  font-style:normal;
+  font-weight: 400;
+  font-display: swap;
+
+  src: url("/custom_addons/hr_system_test/static/src/fonts/myfont.woff2") format('truetype');
+  unicode-range: U+0600-06FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE80-FEFC;
+
+}
+
+*{ font-family: 'El Messiri', sans-serif;}
+
+.page {
+  font-family: 'El Messiri', sans-serif;
+  color: #444444;
+  /* margin: 20mm; */
+  background-image: url('/hr_system_test/static/src/img/hero-bg.png');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+</style> 
 <div class='page'>
 
   <div class="oe_structure">
