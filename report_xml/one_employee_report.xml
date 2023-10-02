@@ -103,7 +103,7 @@
                     <td><span t-field="course.net_salary"/></td>
                     <td><span t-field="course.rewards"/></td>
                     <td><span t-field="course.discount"/></td>
-                        <td><span t-field="course.loan"/></td>
+                         <td><span t-field="course.loan"/></td>
                     <td><span t-field="course.mounth"/></td>
                     <td><span t-field="course.year"/></td>
                     <td><span t-field="course.off_days"/></td>

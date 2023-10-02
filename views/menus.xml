@@ -5,7 +5,8 @@
        <menuitem
             id="hr_menus"
             name=" إدارة الموظفين " 
-            sequence="10"/>
+            sequence="10"
+            web_icon="hr_system_test,static/description/icon.jpg"/>
 
 
        <menuitem
@@ -15,7 +16,6 @@
         action='hr_loan_action'
         sequence="10"/> 
 
-        
        <record id="action_odoo_emp" model="ir.actions.act_window">
             <field name="name">emplo</field>
             <field name="res_model">hr.employee</field>
