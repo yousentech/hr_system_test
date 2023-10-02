@@ -20,11 +20,11 @@
                         
                             </div>
                         <group>
-                            <field name="month" attrs="{'readonly':[('state','=','in_complete')]}"></field>
-                            <field name="year" attrs="{'readonly':[('state','=','in_complete')]}"></field>
+                            <field name="month" attrs="{'readonly':[('state','=','complete')]}"></field>
+                            <field name="year" attrs="{'readonly':[('state','=','complete')]}"></field>
                             
                             <field name="transaction_details_ids">
-                                <tree string="إضافة" editable="bottom" >
+                                <tree string="إضافة" editable="bottom" create="0" delete="0">
                                     <field name="empolyee_id"/>
                                     <field name="off_days"/>
                                     <field name="discount"  decoration-danger="True"/>
@@ -51,6 +51,7 @@
                 <tree limit="10">
                     <field name="month"></field>
                     <field name="year"></field>
+                    <field name="state" decoration-warning="state == 'in_complete'" decoration-success="state == 'complete'"></field>
 
                 </tree>
             </field>
