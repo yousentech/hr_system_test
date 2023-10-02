@@ -16,12 +16,22 @@
         sequence="10"/> 
 
         
-
+       <record id="action_odoo_emp" model="ir.actions.act_window">
+            <field name="name">emplo</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr.hr_kanban_view_employees"/>
+            <field name="domain">[('emplo_checkbox', '=', True)]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to create a new employee</p>
+            </field>
+        </record>
         <menuitem 
         id="employee_menu" 
         name="الموظفون"  
         parent="hr_menus"
-        action="hr.open_view_employee_list_my"
+        action="action_odoo_emp"
         sequence="10"
         />
          <menuitem 

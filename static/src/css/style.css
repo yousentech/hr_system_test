@@ -1,5 +1,5 @@
 
-@font-face {
+/* @font-face {
                           
   font-family: 'El Messiri';
   font-style:normal;
@@ -8,7 +8,7 @@
   src: url("/custom_addons/hr_system_test/static/src/fonts/myfont.woff2") format('truetype');
   unicode-range: U+0600-06FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE80-FEFC;
 
-}
+} */
 
 *{ font-family: 'El Messiri', sans-serif;}
 
@@ -21,7 +21,8 @@
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
- 
+ margin: 0;
+ padding: 5px;
 }
 
 
@@ -75,7 +76,7 @@ section {
 }
 .hero h1 {
   margin: 5px;
-  font-size: 48px;
+  font-size: 50px;
   font-weight: 700;
   color: #012970;
   font-family: 'El Messiri', sans-serif;

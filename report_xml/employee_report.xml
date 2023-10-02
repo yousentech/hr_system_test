@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    
+     <record id="YOUR_FORMAT_ID2" model="report.paperformat">
+        <field name="name">YOUR PAPER FORMAT NAME2</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+        <report
+            id="report_invoice_generate"
+            model="hrsystem.wizard"
+            string="My Wizard Report"
+            report_type="qweb-pdf"
+            name="hr_system_test.report_generate_template2"
+            file="hr_system_test.report_generate_template2"
+            paperformat="YOUR_FORMAT_ID2"
+        
+        />
+           
+    <template id="report_generate_template2">
+         <t t-call="web.html_container">
+           <t t-call="web.internal_layout">
+            <head>
+              <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> 
+              <link rel="preconnect" href="https://fonts.gstatic.com" />
+              <link href="https://fonts.googleapis.com/css2?family=El+Messiri&amp;display=swap" rel="stylesheet" /> -->
+
+              <link rel="preconnect" href="https://fonts.googleapis.com" />
+              <link rel="preconnect" href="https://fonts.gstatic.com" />
+              <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500&amp;display=swap" rel="stylesheet" />
+              <link href="/hr_system_test/static/src/css/style.css" rel="stylesheet" />
+            </head> 
+              <div class='page'>
+
+                <!-- ======= Hero Section ======= -->
+                <section id="hero" class="hero">
+
+                  
+                      <div style=" display: flex;flex-direction: column; justify-content: center; align-items: center;  text-align: center;position: relative;padding-top:70px ;">
+                        <h1 >تقرير كشف رواتب الموظفين</h1>
+                        <div style=" display: flex; flex-direction: row; justify-content: center; align-items: center;text-align: center; ">
+                          <span style="font-size: 33px;color: gray;"  t-esc="datas['year']"/> 
+                          <span style="font-size: 33px;color: gray;">/</span>
+                        <span style="font-size: 33px;color: gray;" t-esc="datas['month']" /> 
+                        </div>
+                        
+                      </div>
+                      <div class=" hero-img" >
+                        <img src="/hr_system_test/static/src/img/hero-img.png"   style="height: 15rem; width: 17rem;" />
+                      </div>
+                  
+                </section><!-- End Hero -->
+
+              
+                <br/>
+                <br/>
+                <br/>
+                <br/> 
+                <br/>
+                <br/>
+                  <table >
+                            
+                      <tr>
+                          <th >اسم الموظف</th>
+                          <th >صافي الراتب</th>
+                          <th >المكافأة</th>
+                          <th > السلفات</th>
+                          <th >الخصم</th>
+                          <th >الشهر</th>
+                          <th > السنة</th>
+                          <th > أيام الاجازات</th>
+                        
+                      </tr>
+                
+                      <t t-foreach="docs" t-as="course">
+                        <!-- <t t-foreach="bill.transaction_details_ids" t-as="course"> -->
+                      <tr>
+                          <!-- <td><span t-esc="bill.partner_names"/></td> -->
+                          <td><span t-field="course.empolyee_id"/></td>
+                          <td><span t-field="course.net_salary"/></td>
+                          <td><span t-field="course.rewards"/></td>
+                          <td><span t-field="course.loan"/></td>
+                          <td><span t-field="course.discount"/></td>
+                          <td><span t-field="course.month"/></td>
+                              <td><span t-field="course.year"/></td>
+                          <td><span t-field="course.off_days"/></td>
+
+                      </tr>
+                    
+                                    
+                        
+                      </t>
+                              <!-- </t> -->
+                              
+                   </table>
+                <!-- ======= Footer ======= -->
+                <footer id="footer" class="footer">
+
+                  <div >
+                    <div class="copyright">
+                  Copyright <strong><span>Yousin Tech Team</span></strong>. All Rights Reserved
+                    </div>
+                  
+                  </div>
+                </footer><!-- End Footer -->
+
+
+              </div>       
+                </t>
+              </t>
+
+
+
+        </template>
+    </data>
+</odoo>
