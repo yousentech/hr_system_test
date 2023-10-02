@@ -40,13 +40,17 @@
             <field name="name">loan.view.tree</field>
             <field name="model">hrsystem.loan</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-success="state=='posted'">
                    <field name="employee_id"></field>
                    <field name="month"></field>           
                    <field name="year"></field>
                    <field name="journal_id"></field>
                    <field name="payment_id"></field>
                    <field name="amount"></field>
+                   <field name="state" 
+                    decoration-success="state=='posted'"
+                    decoration-warning="state=='not_posted'"
+                    widget="badge"></field>
                 </tree>
             </field>
     </record>
