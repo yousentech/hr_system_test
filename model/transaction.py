@@ -1,6 +1,7 @@
 from odoo import api, models, fields, exceptions, _
 import datetime
 # from datetime import datetime
+from odoo.exceptions import ValidationError
 class CashFlow(models.Model):
    _inherit = 'account.move'
 
@@ -15,28 +16,32 @@ class transaction_master(models.Model):
 
     # month = fields.Date(string="الشهر")
     # year = fields.Date(string="السنة")
-  
+    state= fields.Selection([('not_complete','العملية غير مكتملة'),('complete','العملية مكتملة')],default="not_complete",readonly=True) 
     transaction_details_ids = fields.One2many(
         'hrsystem.transactiondetails', 'transaction_id')
 
 
     @api.model
-    def _get_month_selection(self):
+    def get_month_selection(self):
         months = [(str(i), datetime.date(1900, i, 1).strftime('%B')) for i in range(1, 13)]
         return months
        
        
-    month = fields.Selection(selection='_get_month_selection', string='الشهر', index=True)
+    month = fields.Selection(selection='get_month_selection', string='الشهر', required=True)
 
     @api.model
-    def _get_year_selection(self):
+    def get_year_selection(self):
         current_year = datetime.datetime.now().year
         years = [(str(i), str(i)) for i in range(current_year - 10, current_year + 1)]
         return years
 
-    year = fields.Selection(selection='_get_year_selection', string='السنة', index=True)
+    year = fields.Selection(selection='get_year_selection', string='السنة',required=True)
     
     def convirm(self):
+        isExist_invoices = self.env['account.move'].search([('master_id', '=', self.id)])
+        if isExist_invoices :
+                raise ValidationError ("تم الإعتماد سابقا") 
+            
         empolyees = self.env['hr.employee'].search([('emplo_checkbox', '=', 'True')])
 
         for item in self.transaction_details_ids:
@@ -55,7 +60,6 @@ class transaction_master(models.Model):
          
             invoice_details = []
             get_employee_detail = self.env['hrsystem.transactiondetails'].search([('id', '=', item.id)])
-            # print(get_employee_detail,"===========get_employee_detail=====================")
             product_salary = self.env['product.product'].search([('products_select', '=', 'prod_salary')])
             product_salary_object = {
                 'product_id': product_salary.id,
@@ -84,7 +88,7 @@ class transaction_master(models.Model):
                 'price_unit': get_employee_detail.rewards
 
             }
-            # print(get_employee_detail.rewards,"===========rewards=====================")
+     
             invoice_details.append((0, 0, product_rewards_object))
             
             product_off_days = self.env['product.product'].search([('products_select', '=', 'prod_off_days')])
@@ -95,7 +99,7 @@ class transaction_master(models.Model):
 
             }
             invoice_details.append((0, 0, product_off_days_object))
-            # print(invoice_details,"========================")
+           
             jurnal_value = self.env['account.journal'].search([('type', '=', 'purchase')])
   
             invoice = self.env['account.move'].create({
@@ -107,6 +111,7 @@ class transaction_master(models.Model):
                 'master_id': self.id
             })
             invoice.action_post()
+          
           
         message = {
             'type': 'ir.actions.client',
@@ -122,22 +127,34 @@ class transaction_master(models.Model):
 
     def display_employees(self):
         empolyees = self.env['hr.employee'].search([('emplo_checkbox', '=', 'True')])
+        
         for item in empolyees:
+            employee_isExist = self.env['hrsystem.transactiondetails'].search([('empolyee_id', '=', item.id),('month', '=', self.month),('year', '=', self.year)])
+            if employee_isExist:
+                raise ValidationError ("Employees already exist") 
+            
             loan = self.env['hrsystem.loan'].search(
                 [('employee_id', '=', item.id),('month', '=', self.month),('state', '=', 'posted')])
+            
             loan_total = 0 
             for line in loan:
                 loan_total += line.amount
+           
             off_days = self.env['hrsystem.offdays'].search(
                 [('employee_id', '=', item.id),('month', '=', self.month),('state', '=', 'posted')])
             
             off_days_total = 0
             for line in off_days:
                 off_days_total += line.number_of_days
-                
+           
+            
+            compute_discount = item.total_salary / 30
+            discount = compute_discount * off_days_total
+            
+          
             employee = self.env['hrsystem.transactiondetails'].create({
                 'empolyee_id': item.id,
-                'net_salary': item.total_salary,
+                'net_salary': item.total_salary - (loan_total + discount) ,
                 'rewards': 0,
                 'discount': 0,
                 'month': self.month,
@@ -147,29 +164,23 @@ class transaction_master(models.Model):
                 'total_salary':item.total_salary,
                 'transaction_id': self.id
             })
-        total = 0
-        total = employee.net_salary - employee.loan
-        employee.net_salary = total
-        
-        compute_discount = employee.net_salary / 30
-        employee.discount = compute_discount * employee.off_days
-        amount_after_discount = employee.net_salary - employee.discount
-        employee.net_salary = amount_after_discount
-
+        self.write({'state': 'complete'})
+          
+          
 
 class transaction_details(models.Model):
     _name = 'hrsystem.transactiondetails'
     _description = 'hr system transaction details'
 
     empolyee_id = fields.Many2one('hr.employee')
-    net_salary = fields.Float(string="صافي الراتب",)
-    rewards = fields.Float(string="المكافات ",)
-    discount = fields.Float(string="الخصومات ",)
-    month = fields.Char(string="الشهر ",)
-    year = fields.Char(string="السنة ",)
-    off_days = fields.Integer(string="أيام الغياب")
-    loan = fields.Float(string="السلفات ",)
-    total_salary=fields.Float(string="إجمالي الراتب")
+    net_salary = fields.Float(string="صافي الراتب",readonly=True)
+    rewards = fields.Float(string="المكافات ")
+    discount = fields.Float(string="الخصومات ",readonly=True)
+    month = fields.Char(string="الشهر ",readonly=True)
+    year = fields.Char(string="السنة ",readonly=True)
+    off_days = fields.Integer(string="أيام الغياب",readonly=True)
+    loan = fields.Float(string="السلفات ",readonly=True)
+    total_salary=fields.Float(string="إجمالي الراتب",readonly=True)
     transaction_id = fields.Many2one('hrsystem.transaction')
 
     @api.onchange('rewards')
