@@ -11,9 +11,6 @@
                         <!-- <button name="display_employees" string="إظهار الموظفين" type="object"/> -->
                         <button name="convirm" class="oe_highlight" string="إعتماد" type="object" />
                         <!-- <button name="" string="إلغاء " type="object"/>   -->
-                      
-
-
                     </header>
               
                     <sheet>
@@ -31,12 +28,12 @@
                                 <tree string="إضافة" editable="bottom">
                                     <field name="empolyee_id"/>
                                     <field name="off_days"/>
-                                    <field name="discount" decoration-danger="True"/>
+                                    <field name="discount"  decoration-danger="True"/>
                                     <field name="loan"/>
                                     <field name="rewards" decoration-success="True"/>
                                     <field name="month"/>
                                     <field name="year"/>
-                                    <field name="total_salary"/>
+                                    <field name="total_salary" />
                                     <field name="net_salary" decoration-info="True"/>
                                 </tree>
                             </field>
