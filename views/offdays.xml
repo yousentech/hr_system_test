@@ -58,7 +58,7 @@
             </field>
     </record>
 
-     <record id="hr_offdays_action" model="ir.actions.act_window">
+     <record id="hr_offdays_action1" model="ir.actions.act_window">
             <field name="name">الاجازات</field>
             <field name="res_model">hrsystem.offdays</field>
             <field name="view_mode">tree,form</field>
@@ -70,11 +70,12 @@
             </field>
      </record>
 
+
 <menuitem
         id="offdays_menu"
         name="الإجازات"
         parent = "hr_menus"
-        action='hr_offdays_action'
+        action="hr_offdays_action1"
         sequence="20"/>  
 
     </data>
