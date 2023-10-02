@@ -18,8 +18,6 @@ class transaction_master(models.Model):
     _rec_name = 'month'
     _order = 'month ASC'
 
-    # month = fields.Date(string="الشهر")
-    # year = fields.Date(string="السنة")
     state = fields.Selection(
         [('complete', 'العملية مكتملة'), ('in_complete', 'قيد المعالجة')], readonly=True)
     transaction_details_ids = fields.One2many(
@@ -41,8 +39,7 @@ class transaction_master(models.Model):
                  for i in range(current_year - 10, current_year + 1)]
         return years
 
-    year = fields.Selection(selection='get_year_selection',
-                            string='السنة', required=True)
+    year = fields.Selection(selection='get_year_selection',string='السنة', required=True)
 
     def convirm(self):
         isExist_invoices = self.env['account.move'].search(
@@ -149,7 +146,7 @@ class transaction_master(models.Model):
             raise ValidationError("Employees already exist")
         for item in empolyees:
             loan = self.env['hrsystem.loan'].search(
-                [('employee_id', '=', item.id), ('month', '=', self.month), ('state', '=', 'posted')])
+                [('employee_id', '=', item.id), ('month', '=', self.month), ('year', '=', self.year), ('state', '=', 'posted')])
 
             loan_total = 0
             for line in loan:
@@ -157,7 +154,7 @@ class transaction_master(models.Model):
             
 
             off_days = self.env['hrsystem.offdays'].search(
-                [('employee_id', '=', item.id), ('month', '=', self.month), ('state', '=', 'posted')])
+                [('employee_id', '=', item.id), ('month', '=', self.month), ('year', '=', self.year),('state', '=', 'posted')])
 
             off_days_total = 0
             for line in off_days:
