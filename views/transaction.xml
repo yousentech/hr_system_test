@@ -8,24 +8,25 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <!-- <button name="display_employees" string="إظهار الموظفين" type="object"/> -->
-                        <button name="convirm" class="oe_highlight" string="إعتماد" type="object" />
-                        <!-- <button name="" string="إلغاء " type="object"/>   -->
+                        <field name="state" widget="statusbar" statusbar_visible="in_complete,complete"/>
                     </header>
               
                     <sheet>
                         <div name="button_box" position="inside">
+                            <button name="get_invoices" class="oe_highlight" string="جميع الفواتير" type="object" icon="fa-history"/>
+                            <button name="convirm" class="oe_highlight" string="إعتماد" type="object" icon="fa-money"/>
                             <button class="oe_stat_button" type="object" name="display_employees" string="إظهار الموظفين"
                               icon="fa-calendar">
                            
                             </button>
+                        
                             </div>
                         <group>
-                            <field name="month"></field>
-                            <field name="year"></field>
+                            <field name="month" attrs="{'readonly':[('state','=','in_complete')]}"></field>
+                            <field name="year" attrs="{'readonly':[('state','=','in_complete')]}"></field>
                             
                             <field name="transaction_details_ids">
-                                <tree string="إضافة" editable="bottom">
+                                <tree string="إضافة" editable="bottom" >
                                     <field name="empolyee_id"/>
                                     <field name="off_days"/>
                                     <field name="discount"  decoration-danger="True"/>
@@ -49,7 +50,7 @@
             <field name="name">transaction.view.tree</field>
             <field name="model">hrsystem.transaction</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree limit="10">
                     <field name="month"></field>
                     <field name="year"></field>
 
