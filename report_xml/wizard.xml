@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+   <record id="view_my_wizard2_form" model="ir.ui.view">
+            <field name="name">hrsystem.wizard.form</field>
+            <field name="model">hrsystem.wizard_one_employee</field>
+            <field name="arch" type="xml">
+                <form string="My Wizard">
+                    <group>
+                        <field name="emplo_id"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print Report pdf" type="object" class="btn-primary"/>
+                        <!-- <button name="action_print_report_EXCEL" string="Print Report exl" type="object" class="btn-primary"/> -->
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+         <record id="action_my_wizard2" model="ir.actions.act_window">
+            <field name="name">My Wizard</field>
+            <field name="res_model">hrsystem.wizard_one_employee</field>
+            <field name="view_mode">form</field>
+             <!-- <field name="view_type">form</field> -->
+            <field name="view_id" ref="view_my_wizard2_form"/>
+             <field name="target">new</field>
+            <field name="binding_model_id" ref="model_hrsystem_wizard"/>
+        </record>
+                <!-- ================================ action Pdf report2 ==================================== -->
+            <record id="report_generate" model="ir.actions.report">
+            <field name="name">My Wizard Report</field>
+            <field name="type">ir.actions.report</field>
+            <field name="model">hrsystem.wizard_one_employee</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hr_system_test.report_generate_template22</field>
+            <field name="report_file">hr_system_test.report_generate_template22</field>
+            <!-- <field name="binding_model_id" ref="model_openacademy_wizard"/> -->
+        </record>
+
+        
+     <!--== all emplyees report ==============-->
+
+        <record id="view_my_wizard_form" model="ir.ui.view">
+            <field name="name">hrsystem.wizard.form</field>
+            <field name="model">hrsystem.wizard</field>
+            <field name="arch" type="xml">
+                <form string="My Wizard">
+                    <group>
+                        <field name="month"/>
+                        <field name="year"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print Report pdf" type="object" class="btn-primary"/>
+                        <!-- <button name="action_print_report_EXCEL" string="Print Report exl" type="object" class="btn-primary"/> -->
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+         <record id="action_my_wizard" model="ir.actions.act_window">
+            <field name="name">My Wizard</field>
+            <field name="res_model">hrsystem.wizard</field>
+            <field name="view_mode">form</field>
+             <!-- <field name="view_type">form</field> -->
+            <field name="view_id" ref="view_my_wizard_form"/>
+             <field name="target">new</field>
+            <field name="binding_model_id" ref="model_hrsystem_wizard"/>
+        </record>
+                <!-- ================================ Pdf report2 ==================================== -->
+            <record id="report_generate" model="ir.actions.report">
+            <field name="name">My Wizard Report</field>
+            <field name="type">ir.actions.report</field>
+            <field name="model">hrsystem.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hr_system_test.report_generate_template2</field>
+            <field name="report_file">hr_system_test.report_generate_template2</field>
+            <!-- <field name="binding_model_id" ref="model_openacademy_wizard"/> -->
+        </record>
+    </data>
+</odoo>

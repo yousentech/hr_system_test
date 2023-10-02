@@ -24,8 +24,9 @@
                'views/departments.xml',
                'views/products.xml',
             
-               'views/employee_report.xml',
-                'views/one_employee_report.xml',
+               'report_xml/employee_report.xml',
+                'report_xml/one_employee_report.xml',
+                'report_xml/wizard.xml',
                 'views/menus.xml',
               'security/ir.model.access.csv',
          ],

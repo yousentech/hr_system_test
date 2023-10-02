@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+     <!--==report==============-->
+
+     <record id="YOUR_FORMAT_ID" model="report.paperformat">
+        <field name="name">YOUR PAPER FORMAT NAME</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+        <report
+            id="report_invoice_generate_one"
+            model="hrsystem.wizard_one_employee"
+            string="My Wizard Report"
+            report_type="qweb-pdf"
+            name="hr_system_test.report_generate_template22"
+            file="hr_system_test.report_generate_template22"
+            paperformat="YOUR_FORMAT_ID"
+        
+        />
+           <template id="report_generate_template22">
+            <t t-call="web.html_container">
+             <t t-call="web.internal_layout">
+              <head>
+                <link rel="preconnect" href="https://fonts.googleapis.com" /> 
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <link href="https://fonts.googleapis.com/css2?family=El+Messiri&amp;display=swap" rel="stylesheet" />
+
+                <link href="/hr_system_test/static/src/css/style.css" rel="stylesheet" />
+              </head>     
+              <div class='page'>
+
+                <div class="oe_structure">
+                <center>
+                <!-- ======= Hero Section ======= -->
+                <section id="hero" class="hero">
+                  
+                      <div style=" display: flex;flex-direction: column; justify-content: center; align-items: center;text-align: center;position: relative; padding-top:70px ;">
+                        <h1>تقرير كشف راتب الموظف</h1>
+                      <span style="font-size: 33px;color: gray;"  t-esc="datas['name']"/> 
+                      </div>
+                      <div class=" hero-img" >
+                        <img src="/hr_system_test/static/src/img/hero-img.png"  style="height: 15rem; width: 17rem;"  />
+                      </div>
+                  
+                </section><!-- End Hero -->
+
+                <br/>
+                <br/>
+                <br/>
+                <br/> 
+                <br/>
+                <br/>
+              <table>
+                  <tr>
+                      <th> إسم الموظف'</th>
+                      <th>إجمالي الراتب '</th>
+                      <th>  رقم الجوال"'</th>
+                      <th> الوظيفة"</th>
+                      <th> القسم"</th>
+
+                  </tr>
+                  <t t-foreach="docs" t-as="doc">
+                  <tr>
+                      <td> <span t-esc="doc.name"/></td>
+                      <td> <span t-esc="doc.total_salary"/></td>
+                      <!-- <td> <span t-esc="doc.emplo_checkbox"/></td> -->
+                      <td> <span t-esc="doc.mobile_phone"/></td>
+                      <td><span t-esc="doc.job_id.name"/></td>
+                      <td><span t-esc="doc.department_id.name"/></td>
+                  </tr>
+                  </t>
+              </table>
+                                    
+              <br />
+              <h3 style="text-align: right;">نفاصيل الموظف  :</h3>
+                                          
+              <table>
+                  <tr>
+                          <th >صافي الراتب </th>
+                          <th >المكافأة</th>
+                          <th >الخصم</th>
+                          <th > السلفات</th>
+                          
+                          <th >الشهر</th>
+                          <th > السنة</th>
+                          <th > أيام الاجازات</th>
+
+                  </tr>
+                  <t t-foreach="doc.detail_ids" t-as="course">
+                  <tr>
+                  
+                    <td><span t-field="course.net_salary"/></td>
+                    <td><span t-field="course.rewards"/></td>
+                    <td><span t-field="course.discount"/></td>
+                        <td><span t-field="course.loan"/></td>
+                    <td><span t-field="course.mounth"/></td>
+                    <td><span t-field="course.year"/></td>
+                    <td><span t-field="course.off_days"/></td>
+                                                
+                  </tr>
+                  </t>
+
+              </table>
+
+                <!-- ======= Footer ======= -->
+                <footer id="footer" class="footer">
+
+                  <div >
+                    <div class="copyright">
+                  Copyright <strong><span>Yousin Tech Team</span></strong>. All Rights Reserved
+                    </div>
+                  
+                  </div>
+                </footer><!-- End Footer -->
+
+              </center>
+              </div>
+              </div>     
+                                  
+                      
+                 </t>
+                        
+              </t>
+
+        </template>
+
+ 
+    </data>
+</odoo>
+
+
+   
