@@ -16,7 +16,7 @@ class transaction_master(models.Model):
 
     # month = fields.Date(string="الشهر")
     # year = fields.Date(string="السنة")
-    state= fields.Selection([('not_complete','العملية غير مكتملة'),('complete','العملية مكتملة')],default="not_complete",readonly=True) 
+    state= fields.Selection([('complete','العملية مكتملة'),('in_complete','قيد المعالجة')],readonly=True) 
     transaction_details_ids = fields.One2many(
         'hrsystem.transactiondetails', 'transaction_id')
 
@@ -110,9 +110,11 @@ class transaction_master(models.Model):
                 'invoice_line_ids': invoice_details,
                 'master_id': self.id
             })
+       
             invoice.action_post()
-          
-          
+    
+        self.write({'state': 'complete'})
+        print('=====state=======',self.state)
         message = {
             'type': 'ir.actions.client',
             'tag': 'display_notification',
@@ -123,16 +125,15 @@ class transaction_master(models.Model):
             }
 
         }
+        
         return message
 
     def display_employees(self):
         empolyees = self.env['hr.employee'].search([('emplo_checkbox', '=', 'True')])
-        
-        for item in empolyees:
-            employee_isExist = self.env['hrsystem.transactiondetails'].search([('empolyee_id', '=', item.id),('month', '=', self.month),('year', '=', self.year)])
-            if employee_isExist:
+        employee_isExist = self.env['hrsystem.transactiondetails'].search([('transaction_id', '=', self.id)])
+        if employee_isExist:
                 raise ValidationError ("Employees already exist") 
-            
+        for item in empolyees:
             loan = self.env['hrsystem.loan'].search(
                 [('employee_id', '=', item.id),('month', '=', self.month),('state', '=', 'posted')])
             
@@ -164,7 +165,15 @@ class transaction_master(models.Model):
                 'total_salary':item.total_salary,
                 'transaction_id': self.id
             })
-        self.write({'state': 'complete'})
+        self.write({'state': 'in_complete'})
+    
+    def get_invoices (self): 
+        action = self.env.ref('account.action_move_in_invoice_type')
+        result = action.read()[0]
+        result.pop('master_id',None)
+        result['context'] ={}
+        result['domain'] = [('master_id','=',self.id)]
+        return result
           
           
 
