@@ -31,7 +31,6 @@ class loan(models.Model):
           return years
 
        year = fields.Selection(selection='_get_year_selection', string='السنة', index=True)
-       # def unlink(self):
        
      
       
@@ -59,24 +58,31 @@ class loan(models.Model):
             daysoff=0
             amount_of_loans=0
             amount_after_discount=0
-            employee_loans_in_one_month = self.env['hrsystem.loan'].search([('state', '=', 'posted'),('employee_id.id', '=', self.employee_id.id),('month', '=', self.month),('year', '=', self.year)])
+            employee_loans_in_one_month = self.env['hrsystem.loan'].search([('state', '=', 'posted'),('employee_id', '=', self.employee_id.id),('month', '=', self.month),('year', '=', self.year)])
             for loan in employee_loans_in_one_month:
-                  amount_of_loans=amount_of_loans+employee_loans_in_one_month.amount
+                  amount_of_loans=amount_of_loans+loan.amount
+            
             employee=self.env['hr.employee'].search([('id', '=', self.employee_id.id)])
           
-            offday_in_this_month=self.env['hrsystem.offdays'].search([('state', '=', 'posted'),('employee_id.id', '=', self.employee_id.id),('month', '=', self.month),('year', '=', self.year)])
+            offday_in_this_month=self.env['hrsystem.offdays'].search([('state', '=', 'posted'),('employee_id', '=', self.employee_id.id),('month', '=', self.month),('year', '=', self.year)])
+            
             for days in offday_in_this_month:
-             daysoff=daysoff+days.number_of_days
+                daysoff=daysoff+days.number_of_days
+             
             if daysoff > 1:
-                compute_discount = employee.total_salary / 30
-                discount = compute_discount * daysoff
-                amount_after_discount = employee.total_salary - discount
-            if amount_of_loans > amount_after_discount:   
-               raise ValidationError ("لا يمكن اضافة سلفة  ") 
-            elif self.amount > employee.total_salary:
-                raise ValidationError ("مبلغ السلفة اكثر من الراتب     ") 
+               compute_discount = employee.total_salary / 30
+               discount = compute_discount * daysoff
+               amount_after_discount = employee.total_salary - discount
+                
+               if (amount_of_loans+ self.amount) > amount_after_discount:   
+                  print("amount_of_loans  ",amount_of_loans   ,"amount_after_discount  ",amount_after_discount)
+                  raise ValidationError ("لا يمكن اضافة سلفة  ") 
+            
+               
+            if (amount_of_loans + self.amount) > employee.total_salary:
+                raise ValidationError ("مبلغ السلفة اكثر من الراتب     ")
+              
             else:
-                  
              payment = self.env['account.payment'].create({
                 'date': datetime.datetime.now(),
                 'payment_type':'outbound',

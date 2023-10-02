@@ -26,7 +26,7 @@ class off_days(models.Model):
 
        year = fields.Selection(selection='_get_year_selection', string='السنة', index=True)
        def confirm(self):
-        offday_in_this_month=self.env['hrsystem.offdays'].search([('state', '=', 'posted'),('employee_id.id', '=', self.employee_id.id),('month', '=', self.month),('year', '=', self.year)])
+        offday_in_this_month=self.env['hrsystem.offdays'].search([('state', '=', 'posted'),('employee_id', '=', self.employee_id.id),('month', '=', self.month),('year', '=', self.year)])
 
         if self.number_of_days > 3 :
            raise ValidationError ("ايام الاجازة تجاوز الحد المسموح ") 
