@@ -13,31 +13,31 @@ class loan(models.Model):
        journal_id=fields.Many2one( 'account.journal',domain=[('type','in',['cash','bank'])],string="دفتر اليومية")
        payment_id=fields.Many2one('account.payment',string='رقم الدفعة')
        @api.model
-       def _get_month_selection(self):
+       def get_month_selection(self):
         months = [(str(i), datetime.date(1900, i, 1).strftime('%B')) for i in range(1, 13)]
         return months
        
-       month = fields.Selection(selection='_get_month_selection', string='الشهر', index=True)
+       month = fields.Selection(selection='get_month_selection', string='الشهر', index=True)
        def confirm(self):
-          self.write({'state': 'posted'})
+         self.write({'state': 'posted'})
           
        def unconfirm(self):
-              self.write({'state': 'not_posted'})
+         self.write({'state': 'not_posted'})
        
        @api.model
-       def _get_year_selection(self):
-          current_year = datetime.datetime.now().year
-          years = [(str(i), str(i)) for i in range(current_year - 10, current_year + 1)]
-          return years
+       def get_year_selection(self):
+         current_year = datetime.datetime.now().year
+         years = [(str(i), str(i)) for i in range(current_year - 10, current_year + 1)]
+         return years
 
-       year = fields.Selection(selection='_get_year_selection', string='السنة', index=True)
+       year = fields.Selection(selection='get_year_selection', string='السنة', index=True)
        
      
       
        def unlink(self):
            
              if self.state == 'posted':
-                raise ValidationError ("لا يمكن الحذف  ")  
+               raise ValidationError ("لا يمكن الحذف  ")  
          
              return super(loan,self).unlink()
  
@@ -60,7 +60,7 @@ class loan(models.Model):
             amount_after_discount=0
             employee_loans_in_one_month = self.env['hrsystem.loan'].search([('state', '=', 'posted'),('employee_id', '=', self.employee_id.id),('month', '=', self.month),('year', '=', self.year)])
             for loan in employee_loans_in_one_month:
-                  amount_of_loans=amount_of_loans+loan.amount
+               amount_of_loans=amount_of_loans+loan.amount
             
             employee=self.env['hr.employee'].search([('id', '=', self.employee_id.id)])
           
@@ -69,7 +69,7 @@ class loan(models.Model):
             for days in offday_in_this_month:
                 daysoff=daysoff+days.number_of_days
              
-            if daysoff > 1:
+            if daysoff > 1:  
                compute_discount = employee.total_salary / 30
                discount = compute_discount * daysoff
                amount_after_discount = employee.total_salary - discount
