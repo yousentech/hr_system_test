@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <field name="state" widget="statusbar" statusbar_visible="in_complete,complete"/>
+                        <field name="state" widget="statusbar" statusbar_visible="complete , in_complete"/>
                     </header>
               
                     <sheet>
@@ -16,9 +16,7 @@
                             <button name="get_invoices" class="oe_highlight" string="جميع الفواتير" type="object" icon="fa-history"/>
                             <button name="convirm" class="oe_highlight" string="إعتماد" type="object" icon="fa-money"/>
                             <button class="oe_stat_button" type="object" name="display_employees" string="إظهار الموظفين"
-                              icon="fa-calendar">
-                           
-                            </button>
+                              icon="fa-calendar"/>
                         
                             </div>
                         <group>
