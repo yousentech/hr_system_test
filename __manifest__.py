@@ -16,7 +16,6 @@
                 
                 'security/security.xml',
                 'views/loan.xml',
-                'views/loan.xml',
                 'views/offdays.xml',
                 # 'views/transaction.xml',
                 'views/transaction.xml',
