@@ -18,6 +18,7 @@ class loan(models.Model):
     state = fields.Selection(
         [("not_posted", "غير مرحل"), ("posted", "مرحل")],
         default="not_posted",
+        string="الحالة ",
         readonly=True,
     )
     journal_id = fields.Many2one(
@@ -38,8 +39,8 @@ class loan(models.Model):
         selection="get_month_selection", string="الشهر", index=True
     )
 
-    def confirm(self):
-        self.write({"state": "posted"})
+    
+        
 
     def unconfirm(self):
         self.write({"state": "not_posted"})
@@ -59,7 +60,6 @@ class loan(models.Model):
         return super(loan, self).unlink()
 
     def get_payment(self):
-        print("***************", self.payment_id.id)
         self.ensure_one()
         return {
             "type": "ir.actions.act_window",
