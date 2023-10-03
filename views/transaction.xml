@@ -12,6 +12,7 @@
                     </header>
               
                     <sheet>
+                     
                         <div name="button_box" position="inside">
                             <button name="get_invoices" class="oe_highlight" string="جميع الفواتير" type="object" icon="fa-history"/>
                             <button name="convirm" class="oe_highlight" string="إعتماد" type="object" icon="fa-money"/>
@@ -25,15 +26,15 @@
                             
                             <field name="transaction_details_ids">
                                 <tree string="إضافة" editable="bottom" create="0" delete="0">
-                                    <field name="empolyee_id"/>
+                                    <field name="empolyee_id" readonly="1"/>
                                     <field name="off_days"/>
                                     <field name="discount"  decoration-danger="True"/>
                                     <field name="loan"/>
-                                    <field name="rewards" decoration-success="True"/>
+                                    <field name="rewards" attrs="{'readonly':[('parent.state','=','complete')]}" decoration-success="True"/>
                                     <field name="month"/>
                                     <field name="year"/>
                                     <field name="total_salary" />
-                                    <field name="net_salary" decoration-info="True"/>
+                                    <field name="net_salary" decoration-info="True" force_save="1"/>
                                 </tree>
                             </field>
                         </group>
