@@ -65,7 +65,7 @@ class transaction_master(models.Model):
         for recorde in empolyees:
 
             invoice_details = []
-            get_employee_detail = self.env['hrsystem.transactiondetails'].search([('transaction_id', '=', self.id),('empolyee_id', '=', recorde.id)])
+            get_employee_detail = self.env['hrsystem.transactiondetails'].search([('transaction_id', '=', self.id)])
             product_salary = self.env['product.product'].search(
                 [('products_select', '=', 'prod_salary')])
             product_salary_object = {
@@ -105,9 +105,10 @@ class transaction_master(models.Model):
             product_off_days_object = {
                 'product_id': product_off_days.id,
                 'quantity': 1,
-                'price_unit': get_employee_detail.discount
+                'price_unit': get_employee_detail.off_days
 
             }
+
             invoice_details.append((0, 0, product_off_days_object))
 
             jurnal_value = self.env['account.journal'].search(
@@ -168,7 +169,7 @@ class transaction_master(models.Model):
                 'empolyee_id': item.id,
                 'net_salary': item.total_salary - (loan_total + discount) ,
                 'rewards': 0,
-                'discount': 0,
+                'discount': discount,
                 'month': self.month,
                 'year': self.year,
                 'off_days': off_days_total,
