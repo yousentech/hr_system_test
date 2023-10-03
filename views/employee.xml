@@ -2,7 +2,6 @@
 <odoo>
     <data>
 
-
     <record model="ir.ui.view" id="employee_extension_form_view">
             <field name="name">hr.employee.form.inherit</field>
             <field name="model">hr.employee</field>
@@ -18,7 +17,7 @@
                      <!-- <field name="departments_id" /> -->
                 </field>
                 <xpath expr="//notebook" position="inside">
-                     <page string=" نفاصيل الموظفين المضافة hr system" name="order_lines">
+                     <page string=" نفاصيل الموظفين المضافة hr system" name="order_lines" class="our_emp_details">
                   <field name="detail_ids" >
                                 <tree string="التفاصيل " editable="bottom">
                                     <field name="net_salary"/>
@@ -35,5 +34,6 @@
                
             </field>
         </record>
+     
 </data>
 </odoo>
