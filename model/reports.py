@@ -55,8 +55,10 @@ class MyWizard(models.TransientModel):
         years = [(str(i), str(i)) for i in range(current_year - 10, current_year + 1)]
         return years
 
-    month = fields.Selection(selection='_get_month_selection', string='الشهر', help='وصف طويل', index=True)
-    year = fields.Selection(selection='_get_year_selection', string='السنة', help='وصف طويل', index=True)
+    month = fields.Selection(selection='_get_month_selection', string='الشهر', help='وصف طويل', index=True,)
+    year = fields.Selection(selection='_get_year_selection', string='السنة', help='وصف طويل', index=True,
+
+    )
     
     def print_report(self):
         data={

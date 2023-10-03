@@ -12,6 +12,7 @@
                     </header>
               
                     <sheet>
+                     
                         <div name="button_box" position="inside">
                             <button name="get_invoices" class="oe_highlight" string="جميع الفواتير" type="object" icon="fa-history"/>
                             <button name="convirm" class="oe_highlight" string="إعتماد" type="object" icon="fa-money"/>
