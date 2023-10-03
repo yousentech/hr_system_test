@@ -55,7 +55,7 @@ class loan(models.Model):
 
     def unlink(self):
         if self.state == "posted":
-            raise ValidationError("لا يمكن الحذف  ")
+            raise ValidationError("لا يمكن الحذف السفلة مرحلة ")
 
         return super(loan, self).unlink()
 

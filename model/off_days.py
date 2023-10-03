@@ -40,7 +40,11 @@ class off_days(models.Model):
         return years
 
     year = fields.Selection(selection="get_year_selection", string="السنة", index=True)
+    def unlink(self):
+        if self.state == "posted":
+         raise ValidationError(" لا يمكن الحذف الاجازة مرحلة ")
 
+        return super(off_days, self).unlink()
     def confirm(self):
         self.ensure_one()
         days=0
