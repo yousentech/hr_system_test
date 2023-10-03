@@ -52,7 +52,7 @@ class transaction_master(models.Model):
 
         for item in self.transaction_details_ids:
             employee_details = self.env['hrsystem.details'].create({
-                'net_salary': item.net_salary,
+                'net_salary': item.net_salary ,
                 'rewards': item.rewards,
                 'discount': item.discount,
                 'mounth': item.month,
@@ -65,7 +65,7 @@ class transaction_master(models.Model):
         for recorde in empolyees:
 
             invoice_details = []
-            get_employee_detail = self.env['hrsystem.transactiondetails'].search([('transaction_id', '=', self.id)])
+            get_employee_detail = self.env['hrsystem.transactiondetails'].search([('transaction_id', '=', self.id),('empolyee_id', '=', recorde.id)])
             product_salary = self.env['product.product'].search(
                 [('products_select', '=', 'prod_salary')])
             product_salary_object = {
