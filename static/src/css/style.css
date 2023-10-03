@@ -25,7 +25,10 @@
   padding: 5px;
 }
 
-
+.our_emp_details{
+  background-color: #4154f1;
+  color: #f6f9ff;
+}
 
 table {
   border-collapse: collapse;

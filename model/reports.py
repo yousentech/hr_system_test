@@ -4,7 +4,7 @@ import datetime
 class MyWizardOneEmployee(models.TransientModel):
     _name = 'hrsystem.wizard_one_employee'
     _description = 'My Wizard Report'
-    emplo_id=fields.Many2one("hr.employee",domain=[('emplo_checkbox','=','True')],string="اسم الموظف" )
+    emplo_id=fields.Many2one("hr.employee",domain=[('emplo_checkbox','=','True')],string="اسم الموظف" ,required=True)
     def print_report(self):
         data={
             'id':self.emplo_id.id,
